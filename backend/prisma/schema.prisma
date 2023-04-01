@@ -19,6 +19,7 @@ model User {
   number    String
   role      Role   @default(BASIC)
   Store     Store?
+  Cart      Cart[]
 }
 
 model Store {
@@ -50,5 +51,8 @@ enum Role {
 }
 
 model Cart {
-  id String @id @default(uuid())
+  id     String   @id @default(uuid())
+  items  String[]
+  userId String
+  user   User     @relation(fields: [userId], references: [id])
 }
