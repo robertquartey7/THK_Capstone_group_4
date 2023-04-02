@@ -13,8 +13,11 @@ export default function setupJWTStrategy(passport) {
         try {
           return done(null, {
             id: payload.id,
-            username: payload.username,
+            firstName: payload.firstName,
+            lastName: payload.lastName,
             email: payload.email,
+            number: payload.number,
+            role: payload.role,
           });
         } catch (error) {
           return done(error, null);

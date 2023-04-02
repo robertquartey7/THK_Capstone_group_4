@@ -1,6 +1,7 @@
 import express from "express";
 import argon2 from "argon2";
 import jwt from "jsonwebtoken";
+import passport from "passport";
 import { prisma } from "../../db/index.js";
 import dotenv from "dotenv";
 dotenv.config();
@@ -83,9 +84,13 @@ router.post("/login", async (req, res) => {
           const token = jwt.sign(
             {
               id: foundUser.id,
-              username: foundUser.username,
+              firstName: foundUser.firstName,
+              lastName: foundUser.lastName,
               email: foundUser.email,
+              number: foundUser.number,
+              role: foundUser.role,
             },
+
             process.env.SECRET_KEY
           );
 
@@ -120,40 +125,41 @@ router.post("/login", async (req, res) => {
 });
 
 // get current user
-router.get("/", async (req, res) => {
-  try {
-    const currentUser = await prisma.user.findFirst({
-      where: {
-        id: req.user.id,
-      },
-    });
+router.get(
+  "/",
+  passport.authenticate("jwt", {
+    session: false,
+  }),
+  async (req, res) => {
+    try {
+      const currentUser = req.user;
 
-    if (currentUser) {
-      res.status(200).json({
-        success: true,
-        data: currentUser,
-      });
-    } else {
-      res.status(404).json({
+      if (currentUser) {
+        res.status(200).json({
+          success: true,
+          data: currentUser,
+        });
+      } else {
+        res.status(404).json({
+          success: false,
+          message: "user not found",
+        });
+      }
+    } catch (error) {
+      res.status(500).json({
         success: false,
-        message: "user not found",
+        message: "something went wrong",
       });
     }
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: "something went wrong",
-    });
   }
-});
+);
 
 // deleting a user
-
-router.delete("/", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const deletedUser = await prisma.user.delete({
       where: {
-        id: req.user.id,
+        id: req.params.id,
       },
     });
 
@@ -175,22 +181,18 @@ router.delete("/", async (req, res) => {
   }
 });
 
-router.put('/', async(req,res)=>{
-    try{
-        const updateUser = await prisma.user.update({
-            where:{
-                id: req.user.id,
-
-            },
-            data:{
-                ...req.body
-            }
-        })
-    }catch(error){
-         
-    }
-
-
-})
+// user update route
+router.put("/", async (req, res) => {
+  try {
+    const updateUser = await prisma.user.update({
+      where: {
+        id: req.user.id,
+      },
+      data: {
+        ...req.body,
+      },
+    });
+  } catch (error) {}
+});
 
 export default router;
