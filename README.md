@@ -10,11 +10,12 @@
 
 #### POST /store: Creates a new store account.
 
-#### GET /store/ : Retrieves stores base of the query (search)
+#### GET /store?location=123street: Retrieves stores base of the query (search)
 
 #### GET /store/:id: Retrieves information about a specific store with the given id.
 
 #### PUT /store/:id: Updates information about a specific store with the given id.
+
 
 #### DELETE /store/:id: Deletes a store with the given id.
 

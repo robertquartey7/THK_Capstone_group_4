@@ -20,7 +20,7 @@ app.use("/", morgan("tiny"));
 
 // routes
 app.use("/auth", userRoute);
-app.use("/store", storeRoute);
+app.use("/stores", storeRoute);
 app.use("/items", itemRoute);
 
 app.get("/", (req, res) => {

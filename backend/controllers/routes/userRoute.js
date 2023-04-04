@@ -182,17 +182,34 @@ router.delete("/:id", async (req, res) => {
 });
 
 // user update route
-router.put("/", async (req, res) => {
+router.put("/:id", async (req, res) => {
+  const id = req.params.id;
   try {
     const updateUser = await prisma.user.update({
       where: {
-        id: req.user.id,
+        id: req.params.id,
       },
       data: {
         ...req.body,
       },
     });
-  } catch (error) {}
+
+    if (updateUser) {
+      res.status(200).json({
+        success: true,
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+        message: "Not Found",
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "something went wrong",
+    });
+  }
 });
 
 export default router;
