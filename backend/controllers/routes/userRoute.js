@@ -192,17 +192,15 @@ router.put("/:id", async (req, res) => {
         ...req.body,
       },
     });
-
-    if(updateUser){
+    if (updateUser) {
       res.status(200).json({
-        success:true,
-
-      })
-    }else{
+        success: true,
+      });
+    } else {
       res.status(404).json({
-        success:false,
+        success: false,
         message: "Not Found",
-      })
+      });
     }
   } catch (error) {
     res.status(500).json({
