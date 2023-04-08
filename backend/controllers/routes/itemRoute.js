@@ -1,5 +1,6 @@
 import express from "express";
-import prisma from "/db/index"
+import { prisma } from "../../db/index.js";
+
 
 export default function setupJWTStrategy(passport) {
 
