@@ -6,25 +6,41 @@ export default function setupJWTStrategy(passport) {
 const router = express.Router();
 
 router.delete("/store/:id/items:",  passport.authenticate("jwt", {session: false}), async (request, response) => {
-    const todo = request.params.todo;
+  
+  const todo = request.params.todo;
+    try {
 
-    const deleteditem = await prisma.todo.delete({
-      where: {
+    if(req.user.role === "OWNER"){
+      const deletedItem = await prisma.todo.delete({
+        where: {
         id: parseInt(todo),
-      },
-    });
+        },
+     });
 
-    if (deleteditem) {
+    if (deletedItem) {
       response.status(200).json({
         success: true,
         message: "item was updated",
       });
     } else {
-      response.status(500).json({
+      response.status(404).json({
         success: false,
-        message: "Something went wrong",
+        message: "NOT FOUND",
       });
     }
+    }else{
+      response.status(401).json({
+        success: false,
+        message: "UNAUTHORIZED",
+      });
+    }
+
+  } catch (error) {
+    response.status(500).json({
+      success: false,
+      message: "Something went wrong",
+    });
+  }
   });
 
   router.put("/store/:id/items:", async (request, response) => {
