@@ -1,5 +1,8 @@
 # Godega
 
+
+
+
 #### POST /users: Creates a new user account.
 
 #### GET /users/:id: Retrieves information about a specific user with the given id.
