@@ -19,9 +19,9 @@ setupJWTStrategy(passport);
 app.use("/", morgan("tiny"));
 
 // routes
-app.use("/", itemRoute);
-app.use("/auth", userRoute);
-app.use("/stores", storeRoute);
+app.use("/v1", itemRoute);
+app.use("/v1", userRoute);
+app.use("/v1", storeRoute);
 
 
 

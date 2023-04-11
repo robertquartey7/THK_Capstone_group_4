@@ -10,11 +10,11 @@ const router = express.Router();
 
 // sign up routes
 
-router.post("/signup", async (req, res) => {
+router.post("/auth/signup", async (req, res) => {
   try {
     const foundUser = await prisma.user.findFirst({
       where: {
-       email: req.body.email
+        email: req.body.email,
       },
     });
     if (foundUser) {
@@ -66,7 +66,7 @@ router.post("/signup", async (req, res) => {
 
 // login routes
 
-router.post("/login", async (req, res) => {
+router.post("/auth/login", async (req, res) => {
   try {
     const foundUser = await prisma.user.findFirst({
       where: {
@@ -127,7 +127,7 @@ router.post("/login", async (req, res) => {
 
 // get current user
 router.get(
-  "/",
+  "/auth",
   passport.authenticate("jwt", {
     session: false,
   }),
@@ -156,7 +156,7 @@ router.get(
 );
 
 // deleting a user
-router.delete("/:id", async (req, res) => {
+router.delete("/auth/:id", async (req, res) => {
   try {
     const deletedUser = await prisma.user.delete({
       where: {
@@ -183,7 +183,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 // user update route
-router.put("/:id", async (req, res) => {
+router.put("/auth/:id", async (req, res) => {
   try {
     const updateUser = await prisma.user.update({
       where: {

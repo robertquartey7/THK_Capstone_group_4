@@ -8,15 +8,13 @@ const upload = multer();
 
 const router = express.Router();
 
-// get all store
 
-router.get("/", async (req, res) => {
+// get all store
+router.get("/stores", async (req, res) => {
   try {
     // return all the stores in our database.
 
     if (Object.keys(req.query).length === 0) {
-      console.log("first");
-
       try {
         const getStore = await prisma.store.findMany();
 
@@ -47,10 +45,11 @@ router.get("/", async (req, res) => {
   }
 });
 
-
 // get one store
 
-router.get("/:storeId", async (req, res) => {
+
+router.get("/stores/:storeId", async (req, res) => {
+
   try {
     const store = await prisma.store.findFirst({
       where: {
@@ -76,5 +75,53 @@ router.get("/:storeId", async (req, res) => {
     });
   }
 });
+
+
+// update store route
+
+router.put("/stores/:id", async (req, res) => {
+  try {
+    const store = await prisma.store.findFirst({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (store.userId === req.user.id) {
+      try {
+        const updateStore = await prisma.store.update({
+          where: {
+            id: req.params.id,
+          },
+          data: {
+            ...req.body,
+          },
+        });
+
+        if (updateStore) {
+          res.status(200).json({
+            success: true,
+          });
+        }
+      } catch (error) {
+        res.status(500).json({
+          success: false,
+          message: "something went wrong",
+        });
+      }
+    } else {
+      res.status(401).json({
+        success: true,
+        message: "UNAUTHORIZE",
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "something went wrong",
+    });
+  }
+});
+
 
 export default router;
