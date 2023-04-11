@@ -9,6 +9,10 @@ const router = express.Router();
 
 // get all item
 
+const option = {
+  session: false,
+};
+
 router.get("/items", async (_req, res) => {
   try {
     const items = await prisma.item.findMany();
@@ -27,16 +31,11 @@ router.get("/items", async (_req, res) => {
   }
 });
 
-
-
-
 // create an item
 //store/:id/items:
 router.post(
-  "/store/:id/item",
-  passport.authenticate("jwt", {
-    session: false,
-  }),
+  "/stores/:id/item",
+  passport.authenticate("jwt", option),
   upload.single("image"),
   async (req, res) => {
     try {
@@ -51,7 +50,6 @@ router.post(
           try {
             // upload the file
             const fileUploadData = await fileUpload(req.file, "items");
-
             if (fileUploadData) {
               const newItem = await prisma.item.create({
                 data: {
@@ -59,7 +57,6 @@ router.post(
                   imageURL: fileUploadData.url,
                 },
               });
-
               if (newItem) {
                 res.status(201).json({
                   success: true,
@@ -88,39 +85,54 @@ router.post(
   }
 );
 
+// deleting an item
 router.delete(
-  "/store/:id/items:",
-  passport.authenticate("jwt", { session: false }),
-  async (request, response) => {
-    const todo = request.params.todo;
-
+  "/stores/:storeId/items/:itemId",
+  passport.authenticate("jwt", option),
+  async (req, res) => {
     try {
-      if (req.user.role === "OWNER") {
-        const deletedItem = await prisma.todo.delete({
-          where: {
-            id: parseInt(todo),
-          },
-        });
+      const store = await prisma.store.findFirst({
+        where: {
+          id: req.params.storeId,
+        },
+      });
 
-        if (deletedItem) {
-          response.status(200).json({
-            success: true,
-            message: "item was updated",
+      if (store) {
+        const storeUserId = store.userId;
+      }
+
+      try {
+        if (req.user.id === storeUserId) {
+          const deletedItem = await prisma.item.delete({
+            where: {
+              id: req.params.itemId,
+            },
           });
+
+          if (deletedItem) {
+            res.status(200).json({
+              success: true,
+            });
+          } else {
+            res.status(404).json({
+              success: false,
+              message: "NOT FOUND",
+            });
+          }
         } else {
-          response.status(404).json({
+          res.status(401).json({
             success: false,
-            message: "NOT FOUND",
+            message: "UNAUTHORIZED",
           });
         }
-      } else {
-        response.status(401).json({
+      } catch (error) {
+        res.status(500).json({
           success: false,
-          message: "UNAUTHORIZED",
+          message: "Something went wrong",
         });
       }
     } catch (error) {
-      response.status(500).json({
+      res.status(500).json({
         success: false,
         message: "Something went wrong",
       });
@@ -128,28 +140,55 @@ router.delete(
   }
 );
 
-router.put("/store/:storeId/items/:itemId", async (request, response) => {
-  const item = request.params.todo;
-  const updatedTodo = await prisma.todo.update({
-    where: {
-      id: parseInt(item),
-    },
-    data: {
-      name: request.body.name,
-    },
-  });
+// update items route
+router.put(
+  "/stores/:storeId/items/:itemId",
+  passport.authenticate("jwt", option),
+  async (req, res) => {
+    try {
+      const store = await prisma.store.findFirst({
+        where: {
+          id: req.params.itemId,
+        },
+      });
 
-  if (updatedTodo) {
-    response.status(200).json({
-      success: true,
-      message: "item was updated!",
-    });
-  } else {
-    response.status(500).json({
-      success: false,
-      message: "Something went wrong",
-    });
+      if (store) {
+        try {
+          if (store.userId === req.user.id) {
+            const updateItem = await prisma.item.update({
+              where: {
+                id: req.params.itemId,
+              },
+              data: {
+                ...req.body,
+              },
+            });
+
+            if (updateItem) {
+              res.status(200).json({
+                success: true,
+              });
+            }
+          }
+        } catch (error) {
+          res.status(500).json({
+            success: false,
+            message: "Something went wrong",
+          });
+        }
+      } else {
+        res.status(404).json({
+          success: false,
+          message: "UNAUTHORIZE",
+        });
+      }
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Something went wrong",
+      });
+    }
   }
-});
+);
 
 export default router;
