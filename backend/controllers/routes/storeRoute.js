@@ -1,10 +1,12 @@
 import express from "express";
 import multer from "multer";
+import { restart } from "nodemon";
 import { prisma } from "../../db/index.js";
 import { fileUpload } from "../../utils/uploadFile.js";
 const upload = multer();
 
 const router = express.Router();
+// get all store
 
 router.get("/", async (req, res) => {
   try {
@@ -42,5 +44,38 @@ router.get("/", async (req, res) => {
     });
   }
 });
+
+
+// get one store
+
+router.get("/:storeId",async (req, res)=>{
+  try{ 
+    const store = await prisma.store.findFirst({
+      where:{
+        id: req.params.storeId
+      }
+    })
+
+    if(store){
+      res.status(200).json({
+        success: true,
+        data: store
+      })
+    }else{
+      res.status(404).json({
+        success:false,
+        message: "Not Found!"
+      })
+    }
+  }catch(err){
+    res.status(500).json({
+      success: false,
+      message: "something went wrong",
+    });
+  }
+})
+
+
+
 
 export default router;

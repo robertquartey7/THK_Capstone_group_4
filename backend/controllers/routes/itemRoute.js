@@ -7,6 +7,29 @@ import multer from "multer";
 const upload = multer();
 const router = express.Router();
 
+// get all item
+
+router.get("/items", async (_req, res) => {
+  try {
+    const items = await prisma.item.findMany();
+
+    if (items) {
+      res.status(200).json({
+        success: true,
+        data: items,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+    });
+  }
+});
+
+
+
+
 // create an item
 //store/:id/items:
 router.post(
