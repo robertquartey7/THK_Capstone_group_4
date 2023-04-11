@@ -22,6 +22,10 @@ app.use("/", morgan("tiny"));
 app.use("/", itemRoute);
 app.use("/auth", userRoute);
 app.use("/stores", storeRoute);
+<<<<<<< Updated upstream
+=======
+app.use("/items", itemRoute);
+>>>>>>> Stashed changes
 
 app.get("/", (req, res) => {
   console.log("successfully");

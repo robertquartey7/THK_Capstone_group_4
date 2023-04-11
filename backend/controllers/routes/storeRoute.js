@@ -1,11 +1,16 @@
 import express from "express";
 import multer from "multer";
+<<<<<<< Updated upstream
 import { restart } from "nodemon";
 import { prisma } from "../../db/index.js";
+=======
+import {prisma } from '../../db/index.js'
+>>>>>>> Stashed changes
 import { fileUpload } from "../../utils/uploadFile.js";
 const upload = multer();
 
 const router = express.Router();
+<<<<<<< Updated upstream
 // get all store
 
 router.get("/", async (req, res) => {
@@ -74,8 +79,50 @@ router.get("/:storeId",async (req, res)=>{
     });
   }
 })
+=======
+
+router.get("/", upload.single('image'), async (req, res) => {
+
+    try {
+        
+        const file = await fileUpload(req.file)
+        console.log(file)
+    } catch (error) {
+        console.log(error)
+    }
+
+    // try {
+    //     if(Object.keys(req.query)===0){
+
+    //         try {
+    //             const getStore = await prisma.store.findMany()
+
+    //             if(getStore){
+    //                 res.status(200).json({
+    //                     success: true,
+    //                     data: getStore
+    //                 })
+    //             }
+    //         } catch (error) {
+    //             console.log(error)
+    //             res.status(500).json({
+    //                 success:false,
+    //                 message: "something went wrong"
+    //             })
+    //         }
+    //     }
+>>>>>>> Stashed changes
 
 
+    // } catch (error) {
+    //     console.log(error)
+    //     res.status(500).json({
+    //                 success:false,
+    //                 message: "something went wrong"
+    //             })
+    // }
+  
 
+});
 
 export default router;
