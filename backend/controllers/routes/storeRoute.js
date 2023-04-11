@@ -2,10 +2,12 @@ import express from "express";
 import multer from "multer";
 
 import { prisma } from "../../db/index.js";
+
 import { fileUpload } from "../../utils/uploadFile.js";
 const upload = multer();
 
 const router = express.Router();
+
 
 // get all store
 router.get("/stores", async (req, res) => {
@@ -45,7 +47,9 @@ router.get("/stores", async (req, res) => {
 
 // get one store
 
+
 router.get("/stores/:storeId", async (req, res) => {
+
   try {
     const store = await prisma.store.findFirst({
       where: {
@@ -71,6 +75,8 @@ router.get("/stores/:storeId", async (req, res) => {
     });
   }
 });
+
+
 // update store route
 
 router.put("/stores/:id", async (req, res) => {
@@ -116,5 +122,6 @@ router.put("/stores/:id", async (req, res) => {
     });
   }
 });
+
 
 export default router;
