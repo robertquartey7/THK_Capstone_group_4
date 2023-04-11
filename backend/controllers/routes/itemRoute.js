@@ -89,38 +89,46 @@ router.post(
 );
 
 router.delete(
-  "/store/:id/items:",
+  "/store/:storeId/items/:itemId",
   passport.authenticate("jwt", { session: false }),
-  async (request, response) => {
-    const todo = request.params.todo;
+  async (req, res) => {
+    const item = req.params.item;
 
+    const store = await prisma.store.findFirst({where: {
+      id: parseInt(req.params.storeId),
+
+      }
+    },)
+      if(store){
+        const storeUserId = store.userId;
+      }
     try {
-      if (req.user.role === "OWNER") {
-        const deletedItem = await prisma.todo.delete({
+      if (req.user.role === "OWNER" && req.user.id === storeUserId) {
+        const deletedItem = await prisma.item.delete({
           where: {
-            id: parseInt(todo),
+            id: parseInt(item),
           },
         });
 
         if (deletedItem) {
-          response.status(200).json({
+          res.status(200).json({
             success: true,
             message: "item was updated",
           });
         } else {
-          response.status(404).json({
+          res.status(404).json({
             success: false,
             message: "NOT FOUND",
           });
         }
       } else {
-        response.status(401).json({
+        res.status(401).json({
           success: false,
           message: "UNAUTHORIZED",
         });
       }
     } catch (error) {
-      response.status(500).json({
+      res.status(500).json({
         success: false,
         message: "Something went wrong",
       });
@@ -128,24 +136,24 @@ router.delete(
   }
 );
 
-router.put("/store/:storeId/items/:itemId", async (request, response) => {
-  const item = request.params.todo;
-  const updatedTodo = await prisma.todo.update({
+router.put("/store/:storeId/items/:itemId", async (req, res) => {
+  const item = req.params.item;
+  const updatedItem = await prisma.item.update({
     where: {
       id: parseInt(item),
     },
     data: {
-      name: request.body.name,
+      ...req.body
     },
   });
 
-  if (updatedTodo) {
-    response.status(200).json({
+  if (updatedItem) {
+    res.status(200).json({
       success: true,
       message: "item was updated!",
     });
   } else {
-    response.status(500).json({
+    res.status(500).json({
       success: false,
       message: "Something went wrong",
     });

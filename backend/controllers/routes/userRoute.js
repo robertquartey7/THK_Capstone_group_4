@@ -14,7 +14,7 @@ router.post("/auth/signup", async (req, res) => {
   try {
     const foundUser = await prisma.user.findFirst({
       where: {
-       email: req.body.email
+        email: req.body.email,
       },
     });
     if (foundUser) {
