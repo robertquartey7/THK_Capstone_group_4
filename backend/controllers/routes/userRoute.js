@@ -10,11 +10,11 @@ const router = express.Router();
 
 // sign up routes
 
-router.post("/signup", async (req, res) => {
+router.post("/auth/signup", async (req, res) => {
   try {
     const foundUser = await prisma.user.findFirst({
       where: {
-        username: req.body.username,
+        email: req.body.email,
       },
     });
     if (foundUser) {
@@ -48,6 +48,7 @@ router.post("/signup", async (req, res) => {
           });
         }
       } catch (error) {
+        console.log(error)
         res.status(500).json({
           success: false,
           message: "User was not created. Something happened",
@@ -65,7 +66,7 @@ router.post("/signup", async (req, res) => {
 
 // login routes
 
-router.post("/login", async (req, res) => {
+router.post("/auth/login", async (req, res) => {
   try {
     const foundUser = await prisma.user.findFirst({
       where: {
@@ -126,7 +127,7 @@ router.post("/login", async (req, res) => {
 
 // get current user
 router.get(
-  "/",
+  "/auth",
   passport.authenticate("jwt", {
     session: false,
   }),
@@ -155,7 +156,7 @@ router.get(
 );
 
 // deleting a user
-router.delete("/:id", async (req, res) => {
+router.delete("/auth/:id", async (req, res) => {
   try {
     const deletedUser = await prisma.user.delete({
       where: {
@@ -182,7 +183,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 // user update route
-router.put("/:id", async (req, res) => {
+router.put("/auth/:id", async (req, res) => {
   try {
     const updateUser = await prisma.user.update({
       where: {
@@ -192,17 +193,15 @@ router.put("/:id", async (req, res) => {
         ...req.body,
       },
     });
-
-    if(updateUser){
+    if (updateUser) {
       res.status(200).json({
-        success:true,
-
-      })
-    }else{
+        success: true,
+      });
+    } else {
       res.status(404).json({
-        success:false,
+        success: false,
         message: "Not Found",
-      })
+      });
     }
   } catch (error) {
     res.status(500).json({

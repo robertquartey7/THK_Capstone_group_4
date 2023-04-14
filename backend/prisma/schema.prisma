@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model User {
@@ -40,15 +41,15 @@ model Store {
 }
 
 model Item {
-  id       String @id @default(uuid())
+  id       String  @id @default(uuid())
   name     String
   category String
-  Store    Store  @relation(fields: [storeId], references: [id])
-  storeId  String
+  Store    Store   @relation(fields: [storeId], references: [id])
+  storeId  String  @unique
   price    Int
   imageUrl String
-
-  @@index([storeId])
+  cartId   String? @unique
+  cart     Cart?   @relation(fields: [cartId], references: [id])
 }
 
 enum Role {
@@ -57,20 +58,21 @@ enum Role {
 }
 
 model Cart {
-  id     String   @id @default(uuid())
-  items  String[]
+  id String @id @default(uuid())
+
+  items  Item[]
   userId String
-  user   User     @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
 
   @@index([userId])
 }
 
 model Review {
   id        String   @id @default(uuid())
-  userId    String
+  userId    String   @unique
   user      User     @relation(fields: [userId], references: [id])
   Store     Store    @relation(fields: [storeId], references: [id])
-  storeId   String
+  storeId   String   @unique
   content   String
   imageURL  String?
   createdAt DateTime @default(now())

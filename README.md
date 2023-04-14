@@ -1,5 +1,8 @@
 # Godega
 
+
+
+
 #### POST /users: Creates a new user account.
 
 #### GET /users/:id: Retrieves information about a specific user with the given id.
@@ -25,3 +28,14 @@
 #### PUT /store/:id/items/:item_id: Updates an item on the a specific store with the given id and item_id.
 
 #### DELETE /store/:id/items/:item_id: Deletes an item from a specific store with the given id and item_id.
+
+
+
+## Current App Issues Fixes 
+
+```
+ fixed the updates and creating a new auth token.
+
+ going to the home and getting the token after login
+
+```
