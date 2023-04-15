@@ -31,7 +31,7 @@ model Store {
   name       String
   number     String
   location   String
-  imageURL   String
+  imageURL   String?
   reviews    String?
   storehours String?
   item       Item[]
@@ -47,9 +47,11 @@ model Item {
   Store    Store   @relation(fields: [storeId], references: [id])
   storeId  String  @unique
   price    Int
-  imageUrl String
+  imageUrl String?
   cartId   String? @unique
   cart     Cart?   @relation(fields: [cartId], references: [id])
+  isActive Boolean
+
 }
 
 enum Role {

@@ -34,7 +34,7 @@ router.get("/items", async (_req, res) => {
 // create an item
 //store/:id/items:
 router.post(
-  "/stores/:id/item",
+  "/stores/:id/items",
   passport.authenticate("jwt", option),
   upload.single("image"),
   async (req, res) => {
@@ -55,6 +55,7 @@ router.post(
                 data: {
                   ...req.body,
                   imageURL: fileUploadData.url,
+                  isActive: req.body.isActive === "true" && true,
                 },
               });
               if (newItem) {
