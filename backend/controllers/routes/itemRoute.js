@@ -34,7 +34,7 @@ router.get("/items", async (_req, res) => {
 // create an item
 //store/:id/items:
 router.post(
-  "/stores/:id/item",
+  "/stores/:id/items",
   passport.authenticate("jwt", option),
   upload.single("image"),
   async (req, res) => {
@@ -42,32 +42,50 @@ router.post(
       // creating an items
       const store = await prisma.store.findFirst({
         where: {
-          id: parseInt(req.params.id),
+          id: req.params.id,
         },
       });
-      if (storeUserId) {
+      if (store) {
         if (store.userId === req.user.id) {
-          try {
-            // upload the file
-            const fileUploadData = await fileUpload(req.file, "items");
-            if (fileUploadData) {
-              const newItem = await prisma.item.create({
-                data: {
-                  ...req.body,
-                  imageURL: fileUploadData.url,
-                },
-              });
-              if (newItem) {
-                res.status(201).json({
-                  success: true,
+          console.log(store.id);
+          const storeItem = await prisma.item.create({
+            data: {
+              ...req.body,
+              storeId: store.id,
+              price: parseInt(req.body.price),
+              isActive: req.body.isActive == "true" ? true : null,
+            },
+          });
+
+          const itemPhoto = req.file;
+
+          if (itemPhoto) {
+            try {
+              const uploadFile = await fileUpload(req.file);
+
+              if (uploadFile) {
+                const itemImageUpdate = await prisma.item.update({
+                  where: {
+                    id: storeItem.id,
+                  },
+                  data: {
+                    imageUrl: uploadFile.url,
+                  },
                 });
+
+                if (itemImageUpdate) {
+                  res.status(201).json({
+                    success: true,
+                  });
+                }
               }
+            } catch (error) {
+              console.log(error);
+              res.status(500).json({
+                success: false,
+                message: "something went wrong",
+              });
             }
-          } catch (error) {
-            res.status(500).json({
-              success: false,
-              message: "Something went wrong",
-            });
           }
         } else {
           res.status(401).json({
@@ -77,6 +95,7 @@ router.post(
         }
       }
     } catch (error) {
+      console.log(error);
       res.status(500).json({
         success: false,
         message: "Something went wrong",
@@ -96,10 +115,6 @@ router.delete(
           id: req.params.storeId,
         },
       });
-
-      if (store) {
-        const storeUserId = store.userId;
-      }
 
       try {
         if (req.user.id === storeUserId) {
