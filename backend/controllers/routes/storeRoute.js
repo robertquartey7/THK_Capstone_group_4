@@ -39,7 +39,7 @@ router.post(
         });
 
         const storePhoto = req.file;
-        if (storePhoto) {
+        if(storePhoto) {
           try {
             const uploadFile = await fileUpload(req.file);
 

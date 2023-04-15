@@ -44,14 +44,13 @@ model Item {
   id       String  @id @default(uuid())
   name     String
   category String
-  Store    Store   @relation(fields: [storeId], references: [id])
+  store    Store   @relation(fields: [storeId], references: [id])
   storeId  String  @unique
   price    Int
   imageUrl String?
   cartId   String? @unique
   cart     Cart?   @relation(fields: [cartId], references: [id])
   isActive Boolean
-
 }
 
 enum Role {
