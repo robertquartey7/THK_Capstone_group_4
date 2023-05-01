@@ -8,6 +8,12 @@ import { Provider } from "react-redux";
 import store from "./utlis/redux/store";
 import Home from "./Pages/Home/Home";
 import ProtectedRoute from "./utlis/protectedRoutes";
+import Account from "./Pages/Account/Account";
+import Locate from "./Pages/Locate/Locate";
+import Shop from "./Pages/Shop/Shop";
+
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -15,11 +21,23 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <ProtectedRoute><Home/></ProtectedRoute>,
+        element: <Home />,
       },
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/account",
+        element: <Account />,
+      },
+      {
+        path: "/shop",
+        element: <Shop />,
+      },
+      {
+        path: "/locate",
+        element: <Locate />,
       },
     ],
   },

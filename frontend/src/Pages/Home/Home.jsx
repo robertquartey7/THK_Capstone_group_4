@@ -1,7 +1,14 @@
 import React from "react";
+import SearchLocation from "../../Component/searchLocation";
+import TopBodega from "../../Component/TopBodega";
 
 function Home() {
-  return <div>Home</div>;
+  return (
+    <>
+      <SearchLocation/>
+      <TopBodega/>
+    </>
+  );
 }
 
 export default Home;

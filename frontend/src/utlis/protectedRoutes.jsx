@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }) => {
   console.log(location);
 
   if (!Cookies.get("token")) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
   return children;
 };
