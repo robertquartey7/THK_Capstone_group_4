@@ -1,12 +1,11 @@
 import axios from "axios";
 
-// getting all store.
-export const getStore = async (url) => {
-
-    
-};
-
-// getting all items for the store.
-export const getItem = async (url) => {
- 
+export const getData = async (url) => {
+  return new Promise(async (resolve, reject) => {
+    const data = await axios.get(url);
+    if (!data) {
+      reject(data.data);
+    }
+    resolve(data.data);
+  });
 };
