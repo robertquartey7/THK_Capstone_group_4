@@ -30,6 +30,12 @@ const router = createBrowserRouter([
       {
         path: "/account",
         element: <Account />,
+        children:[
+          {
+            path:'persnal',
+            element: ''
+          }
+         ]
       },
       {
         path: "/shop",
