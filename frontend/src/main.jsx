@@ -6,13 +6,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./Pages/Login/Login";
 import { Provider } from "react-redux";
 import store from "./utlis/redux/store";
-import Home from "./Pages/Home/Home";
+import Home from "./Pages/Home";
 import ProtectedRoute from "./utlis/protectedRoutes";
-import Account from "./Pages/Account/Account";
-import Locate from "./Pages/Locate/Locate";
-import Shop from "./Pages/Shop/Shop";
-
-
+import Account from "./Pages/Account";
+import Locate from "./Pages/Locate";
+import Shop from "./Pages/Shop";
+import Personal from "./Pages/Personal";
+import Accessibility from "./Pages/Accessibility";
+import Payment from "./Pages/Payment";
 
 const router = createBrowserRouter([
   {
@@ -30,12 +31,20 @@ const router = createBrowserRouter([
       {
         path: "/account",
         element: <Account />,
-        children:[
+        children: [
           {
-            path:'persnal',
-            element: ''
-          }
-         ]
+            path: "personal",
+            element: <Personal />,
+          },
+          {
+            path: "paymentoption",
+            element: <Payment />,
+          },
+          {
+            path: "accessibility",
+            element: <Accessibility />,
+          },
+        ],
       },
       {
         path: "/shop",
