@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import { ThemeProvider } from "@material-tailwind/react";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./Pages/Login/Login";
@@ -11,9 +12,9 @@ import ProtectedRoute from "./utlis/protectedRoutes";
 import Account from "./Pages/Account";
 import Locate from "./Pages/Locate";
 import Shop from "./Pages/Shop";
-import Personal from "./Pages/Personal";
-import Accessibility from "./Pages/Accessibility";
-import Payment from "./Pages/Payment";
+import Personal from "./Component/Personal";
+import Accessibility from "./Component/Accessibility";
+import Payment from "./Component/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -61,7 +62,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>
 );

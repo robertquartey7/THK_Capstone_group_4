@@ -1,0 +1,110 @@
+import React from "react";
+
+function Personal() {
+  return (
+    <div>
+      <div class="container px-5  mx-auto flex w-full h-full">
+        <div class="bg-white rounded-lg p-4 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
+          <div className="relative w-60 h-60 m-auto">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-10 h-10 absolute right-7 bg-gray-500 rounded-full"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"
+              />
+            </svg>
+            <div>
+              <img
+                src="/img/default.png"
+                alt="default"
+                className="border border-black rounded-full"
+              />
+            </div>
+          </div>
+          <div class="relative mb-1 flex  justify-between">
+            <div className=" w-full">
+              <label for="firstName" class="leading-7 text-sm text-gray-600 ">
+                FirstName
+              </label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                class="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
+            <div className="w-full">
+              <label for="lastName" class="leading-7 text-sm text-gray-600">
+                LastName
+              </label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                class="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
+          </div>
+          <div className="relative mb-1">
+            <label for="email" class="leading-7 text-sm text-gray-600">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            />
+          </div>
+          <div className="relative mb-1">
+            <label for="address" class="leading-7 text-sm text-gray-600">
+              Home address
+            </label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              class="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            />
+          </div>
+          <div>
+            <div className="relative mb-1">
+              <label for="number" class="leading-7 text-sm text-gray-600">
+                Phone Number
+              </label>
+              <input
+                type="text"
+                id="number"
+                name="number"
+                class="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
+            <div className="relative mb-4">
+              <label for="dob" class="leading-7 text-sm text-gray-600">
+                Date of Birth
+              </label>
+              <input
+                type="date"
+                id="dob"
+                name="dob"
+                class="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
+          </div>
+          <button class="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-500 rounded text-lg">
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Personal;

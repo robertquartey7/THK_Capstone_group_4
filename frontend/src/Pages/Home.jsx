@@ -1,12 +1,18 @@
 import React from "react";
-import SearchLocation from "../Component/searchLocation";
+
 import TopBodega from "../Component/TopBodega";
+import Hero from "../Component/Hero";
+import Search from "../Component/Search";
 
 function Home() {
   return (
     <>
-      <SearchLocation />
+      <Hero />
+      <div className="">
+      <Search/>
+      </div>
       <TopBodega />
+     
     </>
   );
 }
