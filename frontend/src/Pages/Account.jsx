@@ -7,17 +7,17 @@ function Account() {
     <div className="flex">
       <aside
         id="logo-sidebar"
-        class="left-0 z-40 w-64 h-screen "
+        className="left-0 z-40 w-64 h-screen "
         aria-label="Sidebar"
       >
-        <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-100">
-          <ul class="space-y-2 font-medium">
+        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-100">
+          <ul className="space-y-2 font-medium">
             <li>
               <Link
                 to="/account/personal"
-                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
-                <span class="flex-1 ml-3 whitespace-nowrap text-black">
+                <span className="flex-1 ml-3 whitespace-nowrap text-black">
                   Personal Infomation
                 </span>
                 <svg
@@ -39,9 +39,9 @@ function Account() {
             <li>
               <Link
                 to="/account/paymentoption"
-                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
-                <span class="flex-1 ml-3 whitespace-nowrap text-black">
+                <span className="flex-1 ml-3 whitespace-nowrap text-black">
                   Payment Options
                 </span>
                 <svg
@@ -63,9 +63,9 @@ function Account() {
             <li>
               <Link
                 to="/account/accessibility"
-                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
-                <span class="flex-1 ml-3 whitespace-nowrap text-black">
+                <span className="flex-1 ml-3 whitespace-nowrap text-black">
                   Accessibility Tools
                 </span>
                 <svg

@@ -2,6 +2,7 @@ export const links = [
   {
     name: "Locate",
     submenu: true,
+    link:'/locate',
     sublinks: [
       {
         sublink: [
@@ -15,6 +16,7 @@ export const links = [
   {
     name: "Shop",
     submenu: true,
+    link:'',
     sublinks: [
       {
         sublink: [
@@ -29,6 +31,7 @@ export const links = [
   {
     name: "Account",
     submenu: true,
+    link:'',
     sublinks: [
       {
         sublink: [

@@ -3,8 +3,8 @@ import React from "react";
 function Personal() {
   return (
     <div>
-      <div class="container px-5  mx-auto flex w-full h-full">
-        <div class="bg-white rounded-lg p-4 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
+      <div className="container px-5  mx-auto flex w-full h-full">
+        <div className="bg-white rounded-lg p-4 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
           <div className="relative w-60 h-60 m-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -28,77 +28,77 @@ function Personal() {
               />
             </div>
           </div>
-          <div class="relative mb-1 flex  justify-between">
+          <div className="relative mb-1 flex  justify-between">
             <div className=" w-full">
-              <label for="firstName" class="leading-7 text-sm text-gray-600 ">
+              <label for="firstName" className="leading-7 text-sm text-gray-600 ">
                 FirstName
               </label>
               <input
                 type="text"
                 id="firstName"
                 name="firstName"
-                class="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
             <div className="w-full">
-              <label for="lastName" class="leading-7 text-sm text-gray-600">
+              <label for="lastName" className="leading-7 text-sm text-gray-600">
                 LastName
               </label>
               <input
                 type="text"
                 id="firstName"
                 name="firstName"
-                class="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
           </div>
           <div className="relative mb-1">
-            <label for="email" class="leading-7 text-sm text-gray-600">
+            <label for="email" className="leading-7 text-sm text-gray-600">
               Email
             </label>
             <input
               type="email"
               id="email"
               name="email"
-              class="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              className="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>
           <div className="relative mb-1">
-            <label for="address" class="leading-7 text-sm text-gray-600">
+            <label for="address" className="leading-7 text-sm text-gray-600">
               Home address
             </label>
             <input
               type="text"
               id="address"
               name="address"
-              class="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              className="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>
           <div>
             <div className="relative mb-1">
-              <label for="number" class="leading-7 text-sm text-gray-600">
+              <label for="number" className="leading-7 text-sm text-gray-600">
                 Phone Number
               </label>
               <input
                 type="text"
                 id="number"
                 name="number"
-                class="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
             <div className="relative mb-4">
-              <label for="dob" class="leading-7 text-sm text-gray-600">
+              <label for="dob" className="leading-7 text-sm text-gray-600">
                 Date of Birth
               </label>
               <input
                 type="date"
                 id="dob"
                 name="dob"
-                class="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
           </div>
-          <button class="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-500 rounded text-lg">
+          <button className="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-500 rounded text-lg">
             Submit
           </button>
         </div>

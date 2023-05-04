@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 function Hero() {
   return (
-    <div className="h-96 flex p-2 px-10">
-      <div className="flex flex-col justify-around py-16">
+    <div className="h-96 flex p-2 px-10 gap-5">
+      <div className="flex flex-col justify-around py-16 md:w-3/4 lg:w-2/4 sm:w-full items-center">
         <svg
           width="500"
           height="109"
@@ -22,15 +22,16 @@ function Hero() {
             fill="#00BF63"
           />
         </svg>
-        <h1 className="text-blue-gray-900 mb-3">Get Your Bodego On The Go</h1>
+        <h1 className="text-blue-gray-900 mb-5">Get Your Bodego On The Go</h1>
         <Link to={"/signup"}>
-          {" "}
+         
           <span className="p-3 border rounded-lg bg-green-500 text-white ">
             Sign Up Now
           </span>
         </Link>
       </div>
-      <div className="">
+      
+      <div className="md:w-1/4  lg:w-2/4 sm:w-1/4">
         <img src="/img/heroimg.svg" alt="" className="bg-blend-overlay w-full h-full " />
       </div>
     </div>
