@@ -15,7 +15,9 @@ function Map() {
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
   });
   if (!isLoaded) {
-    return <div>loading ....</div>;
+    return;
+    <>
+    </>;
   }
   return (
     <div className="h-full">

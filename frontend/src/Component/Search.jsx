@@ -1,15 +1,9 @@
-import React from 'react'
-
+import React from "react";
 
 function Search() {
-
-
-
-
-
   return (
-     <>
-     <form className="flex items-center w-full px-20">
+    <>
+      <form className="flex items-center w-full px-20">
         <div className="relative w-full">
           <input
             type="text"
@@ -37,9 +31,8 @@ function Search() {
           </div>
         </div>
       </form>
-   
-  </>
-  )
+    </>
+  );
 }
 
-export default Search
+export default Search;

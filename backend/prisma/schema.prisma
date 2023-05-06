@@ -19,14 +19,14 @@ model User {
   password  String
   number    String
   role      Role     @default(BASIC)
-  Store     Store?
+  Store     Store[]
   Cart      Cart[]
   Review    Review[]
 }
 
 model Store {
   id         String   @id @default(uuid())
-  userId     String   @unique
+  userId     String   
   user       User     @relation(fields: [userId], references: [id])
   name       String
   number     String
@@ -36,6 +36,7 @@ model Store {
   storehours String?
   item       Item[]
   Review     Review[]
+
 
   @@index([userId])
 }
@@ -51,6 +52,7 @@ model Item {
   cartId   String? @unique
   cart     Cart?   @relation(fields: [cartId], references: [id])
   isActive Boolean
+  
 }
 
 enum Role {
