@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { links } from "./Mylinks";
-
+import { useNavigate } from "react-router-dom";
 const NavLinks = () => {
   const [heading, setHeading] = useState("");
   const [subHeading, setSubHeading] = useState("");
+  const navigate = useNavigate()
   return (
     <>
       {links.map((link) => (
@@ -13,12 +14,12 @@ const NavLinks = () => {
             <h1
               className="py-7 flex justify-between items-center md:pr-0 pr-5 group hover:text-green-500"
               onClick={() => {
-                
+                navigate(link.link)
                 heading !== link.name ? setHeading(link.name) : setHeading("");
                 setSubHeading("");
               }}
             >
-              {link.name}
+              {link.name} 
               <span className="text-xl md:hidden inline">
                 <ion-icon
                   name={`${

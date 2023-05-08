@@ -11,6 +11,7 @@ function TopBodega() {
   if (isLoading) {
     return <Loading />;
   }
+ 
 
   console.log(data);
   return (
@@ -19,7 +20,7 @@ function TopBodega() {
         <h1 className="text-4xl">Top Bodega In Your Area</h1>
       </div>
       <div className="grid grid-cols-5 gap-4">
-        {data.data &&
+        {data ?
           data.data?.map((element) => {
             return (
               <div key={element.id}>
@@ -31,7 +32,14 @@ function TopBodega() {
                 <p>{element.name}</p>
               </div>
             );
-          })}
+
+          })
+          :
+          <div>
+            error
+          </div>
+          }
+
       </div>
     </div>
   );
