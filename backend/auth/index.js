@@ -8,6 +8,7 @@ export default function setupJWTStrategy(passport) {
       {
         jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
         secretOrKey: process.env.SECRET_KEY,
+        
       },
       function (payload, done) {
         try {
