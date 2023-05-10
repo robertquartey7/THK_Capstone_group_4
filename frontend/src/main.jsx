@@ -14,10 +14,11 @@ import Locate from "./Pages/Locate";
 import Shop from "./Pages/Shop";
 import Personal from "./Component/Personal";
 import Accessibility from "./Component/Accessibility";
-import Payment from "./Component/Payment/Payment";
+
 import Product from "./Pages/Product";
-import LocateComp from './Component/LocateComp'
+import LocateComp from "./Component/LocateComp";
 import Card from "./Component/Card";
+import PaymentMethod from "./Component/PaymentMethod/PaymentMethod";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,8 +29,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path:"/card",
-        element:<Card/>
+        path: "/card",
+        element: <Card />,
       },
       {
         path: "/login",
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
           },
           {
             path: "paymentoption",
-            element: <Payment />,
+            element: <PaymentMethod />,
           },
           {
             path: "accessibility",
@@ -56,22 +57,20 @@ const router = createBrowserRouter([
       {
         path: "/shop",
         element: <Shop />,
-        
       },
       {
         path: "/locate",
         element: <Locate />,
-        children:[
+        children: [
           {
-            path:'',
-            element:<LocateComp/>
+            path: "",
+            element: <LocateComp />,
           },
           {
-            path:'products',
-            element:<Product/>
+            path: "products",
+            element: <Product />,
           },
-         
-        ]
+        ],
       },
     ],
   },
