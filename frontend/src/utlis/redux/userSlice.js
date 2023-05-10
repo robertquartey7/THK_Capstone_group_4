@@ -9,9 +9,15 @@ export const user = createSlice({
     token: "",
     role: "",
     email: "",
+    isAuthenticated: false,
   },
   reducers: {
-    setUserProfile: (state, actions) => {},
+    setUserProfile: (state, actions) => {
+      
+    },
+    setAuthenticated: (state, action) => {
+      state.isAuthenticated = action.payload.value;
+    },
   },
 });
 

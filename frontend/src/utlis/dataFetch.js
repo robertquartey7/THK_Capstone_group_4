@@ -1,12 +1,4 @@
 import axios from "axios";
 
-// getting all store.
-export const getStore = async (url) => {
+export const fetcher = url => axios.get(url).then(res => res.data)
 
-    
-};
-
-// getting all items for the store.
-export const getItem = async (url) => {
- 
-};
