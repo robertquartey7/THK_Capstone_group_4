@@ -1,13 +1,14 @@
 import React from 'react'
 import { useState } from 'react';
+import axios from "axios";
 
 export default function Signup() {
   
   const [user, setUser] = useState({
-    firstName:'',
-    lastName:'',
-    email:'',
-    number:'',
+    firstName:"",
+    lastName:"",
+    email:"",
+    number:"",
     dob:"",
     address:"",
     password:''
@@ -28,10 +29,36 @@ export default function Signup() {
     e.preventDefault()
     console.log(user)
 
-  }
+    axios.post(`${import.meta.env.VITE_APP_URL}auth/signup`, {
+      displayName: `${user.fname} ${user.lname}`,
+      // firstName: user.firstName, 
+      // lastName: user.lastName,
+      email:  user.email,
+      number: user.number,
+      dob: user.dob,
+      address:user. address,
+      password:user. password,
+    })
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
   return (
-    <div className="Signup">
+    <div className="flex"> 
+     <div className="flex-1 text-blue-900 font-semibold items-end">
+        <p className="text-3xl">BODE</p>
+      </div>
+      <div className="flex-1 text-right text-green-500 font-semibold ">
+        <p className="text-3xl">GO</p>
+      </div>
+      <div className='Signup'></div>
+      <div className="pl-4 flex justify-start mx-10 flex-col text-blue-900 font-semibold">
+        <p className="text-3xl">SignUp</p>
+      </div>
        <div className="container px-5  mx-auto flex w-full h-full">
         <form className="bg-white rounded-lg p-4 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md" onSubmit={handleSubmit}>
           
@@ -132,89 +159,14 @@ export default function Signup() {
               />
             </div>
           <button className="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-500 rounded text-lg">
-            Submit
+            create account
           </button>
         </form>
       </div>
         </div>
   );
 }
-//   const SignupForm = () => {
-//     const {register, handleSubmit} = useForm()
-//     const [authSuccess, setAuthSuccess] = useState(false)
-//     const [authUnsuccess, setAuthUnsuccess] = useState(false)
-
-//     const userSignup = async (data) => {
-//         console.log(data);
-//         try {
-//           const resp = await axios.post("http://localhost:5173/signup", data);
-
-//           console.log(resp);
-        
-
-//           if(resp.data.success === true){
-//             setAuthSuccess(true);
-//             localStorage.setItem("token", resp.data.token)
-//           } 
-//       } catch(error) {
-//         setAuthUnsuccess(true);
-//       }
-//     }
-// router.post("/signup", async (req, res) => {
-//   try {
-//     const foundUser = await prisma.user.findFirst({
-//       where: {
-//         username: req.body.username,
-//       },
-//     });
-//     if (foundUser) {
-//       res.status(401).json({
-//         success: false,
-//         message: "User already exist",
-//       });
-//     } else {
-//       try {
-//         const Password = await (req.body.password);
-//         const newUser = await prisma.user.create({
-//           data: {
-//             username: req.body.username,
-//             password: Password,
-//             firstname:firstname,
-//             lastname: lastname,
-//             email: email,
-//             number: number,
-
-//           },
-//         });
-
-//         if (newUser) {
-//           res.status(201).json({
-//             success: true,
-//             message: "User successfully created",
-//           });
-//         } else {
-//           res.status(500).json({
-//             success: false,
-//             message: "User was not created. Something happened",
-//           });
-//         }
-//       } catch (error) {
-//         res.status(500).json({
-//           success: false,
-//           message: "User was not created. Something happened",
-//         });
-//       }
-//     }
-//   } catch (error) {
-//     console.log(error)
-//     res.status(500).json({
-//       success: false,
-//       message: "Something went wrong",
-//     });
-//   }
-// });
-// }       
-
+  
 // export default Signup
 // model User {
 //   id        String   @id @default(uuid())
