@@ -1,10 +1,11 @@
 import React from "react";
-
+import { useState } from "react";
 function Personal() {
   return (
     <div>
       <div className="container px-5  mx-auto flex w-full h-full">
-        <div className="bg-white rounded-lg p-4 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
+        <form className="bg-white rounded-lg p-4 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
+          <span>Contact Details</span>
           <div className="relative w-60 h-60 m-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -28,16 +29,19 @@ function Personal() {
               />
             </div>
           </div>
-          <div className="relative mb-1 flex  justify-between">
+          <div className="relative mb-1 flex gap-4  justify-between">
             <div className=" w-full">
-              <label for="firstName" className="leading-7 text-sm text-gray-600 ">
+              <label
+                for="firstName"
+                className="leading-7 text-sm text-gray-600 "
+              >
                 FirstName
               </label>
               <input
                 type="text"
                 id="firstName"
                 name="firstName"
-                className="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="w-full bg-white rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
             <div className="w-full">
@@ -48,7 +52,7 @@ function Personal() {
                 type="text"
                 id="firstName"
                 name="firstName"
-                className="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="w-full bg-white rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
           </div>
@@ -60,7 +64,7 @@ function Personal() {
               type="email"
               id="email"
               name="email"
-              className="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              className="w-full bg-white rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>
           <div className="relative mb-1">
@@ -71,7 +75,7 @@ function Personal() {
               type="text"
               id="address"
               name="address"
-              className="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              className="w-full bg-white rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>
           <div>
@@ -83,7 +87,7 @@ function Personal() {
                 type="text"
                 id="number"
                 name="number"
-                className="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="w-full bg-white rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
             <div className="relative mb-4">
@@ -94,14 +98,80 @@ function Personal() {
                 type="date"
                 id="dob"
                 name="dob"
-                className="w-full bg-white rounded border border-gray-300 focus:bg-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="w-full bg-white rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
           </div>
-          <button className="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-500 rounded text-lg">
-            Submit
+
+          <div className="mt-10">
+            <span>Delivery details</span>
+            <div className="relative mb-1">
+              <label for="address" className="leading-7 text-sm text-gray-600">
+                Home address
+              </label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                className="w-full bg-white rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
+            <div className="relative mb-1 flex gap-4  justify-between">
+              <div className=" w-full">
+                <label for="state" className="leading-7 text-sm text-gray-600 ">
+                  State
+                </label>
+                <input
+                  type="text"
+                  id="state"
+                  name="state"
+                  className="w-full bg-white rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+              <div className="w-full">
+                <label for="city" className="leading-7 text-sm text-gray-600">
+                  City
+                </label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  className="w-full bg-white rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+            </div>
+            <div className="relative mb-1 flex gap-4  justify-between">
+              <div className=" w-full">
+                <label
+                  for="zipcode"
+                  className="leading-7 text-sm text-gray-600 "
+                >
+                  Zipcode
+                </label>
+                <input
+                  type="text"
+                  id="zipcode"
+                  name="zipcode"
+                  className="w-full bg-white rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+              <div className="w-full">
+                <label for="apt" className="leading-7 text-sm text-gray-600">
+                  Apt No.
+                </label>
+                <input
+                  type="text"
+                  id="apt"
+                  name="apt"
+                  className="w-full bg-white rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+            </div>
+          </div>
+          <button className="mt-5 text-white bg-secondary border-0 py-2 px-6 focus:outline-none hover:bg-opacity-80 rounded text-lg">
+            Continue
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );

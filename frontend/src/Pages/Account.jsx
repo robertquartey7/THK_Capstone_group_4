@@ -15,9 +15,9 @@ function Account() {
             <li>
               <Link
                 to="/account/personal"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white  focus:bg-secondary active:bg-secondary hover:bg-secondary"
               >
-                <span className="flex-1 ml-3 whitespace-nowrap text-black">
+                <span className="flex-1 ml-3 whitespace-nowrap text-black ">
                   Personal Infomation
                 </span>
                 <svg
@@ -39,7 +39,7 @@ function Account() {
             <li>
               <Link
                 to="/account/paymentoption"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white focus:bg-secondary active:bg-secondary hover:bg-secondary"
               >
                 <span className="flex-1 ml-3 whitespace-nowrap text-black">
                   Payment Options
@@ -63,7 +63,7 @@ function Account() {
             <li>
               <Link
                 to="/account/accessibility"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-whitefocus:bg-secondary active:bg-secondary hover:bg-secondary"
               >
                 <span className="flex-1 ml-3 whitespace-nowrap text-black">
                   Accessibility Tools
@@ -86,12 +86,10 @@ function Account() {
             </li>
           </ul>
         </div>
-
       </aside>
       <div className="border border-solid w-full p-2">
-        <Outlet/>
+        <Outlet />
       </div>
-   
     </div>
   );
 }

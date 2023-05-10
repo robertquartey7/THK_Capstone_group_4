@@ -6,8 +6,8 @@ export const links = [
     sublinks: [
       {
         sublink: [
-          { name: "Store", link: "/" },
-          { name: "Products ", link: "/" },
+          { name: "Store", link: "/locate/stores" },
+          { name: "Products ", link: "/locate/products" },
        
         ],
       },
@@ -20,8 +20,8 @@ export const links = [
     sublinks: [
       {
         sublink: [
-          { name: "Delivery", link: "/" },
-          { name: "Pickup ", link: "/" },
+          { name: "Delivery", link: "/shop/delivery" },
+          { name: "Pickup ", link: "/shop/pickup" },
        
         ],
       },
@@ -35,8 +35,8 @@ export const links = [
     sublinks: [
       {
         sublink: [
-          { name: "History", link: "/" },
-          { name: "Setting ", link: "/setting" },
+          { name: "History", link: "/account/history" },
+          { name: "Setting ", link: "/account/setting" },
          
         ],
       },

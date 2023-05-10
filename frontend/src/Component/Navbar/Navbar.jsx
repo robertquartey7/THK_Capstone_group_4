@@ -27,12 +27,12 @@ const Navbar = () => {
         </ul>
         <div className="md:flex hidden py-5 gap-2">
           <Link>
-            <span className="p-3 border rounded-xl px-4  border-green-500 bg-green-500 text-white">
+            <span className="p-3 border rounded-xl px-4  border-secondary bg-secondary text-white hover:bg-opacity-80">
               SignUp
             </span>
           </Link>
           <Link>
-            <span className="p-3 border rounded-xl px-4  border-green-500 text-green-500">
+            <span className="p-3 border rounded-xl px-4  border-secondary text-secondary hover:bg-opacity-80">
               Login
             </span>
           </Link>
@@ -52,12 +52,12 @@ const Navbar = () => {
           <NavLinks />
           <div className="py-5 flex gap-2">
             <Link>
-              <span className="p-3 border rounded-xl px-4  border-green-500 bg-green-500 text-white">
+              <span className="p-3 border rounded-xl px-4  border-secondary bg-secondary text-white hover:bg-opacity-80">
                 SignUp
               </span>
             </Link>
             <Link>
-              <span className="p-3 border rounded-xl px-4  border-green-500 text-green-500">
+              <span className="p-3 border rounded-xl px-4  border-secondary text-secondary hover:bg-opacity-80">
                 Login
               </span>
             </Link>

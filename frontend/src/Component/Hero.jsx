@@ -24,15 +24,18 @@ function Hero() {
         </svg>
         <h1 className="text-blue-gray-900 mb-5">Get Your Bodego On The Go</h1>
         <Link to={"/signup"}>
-         
-          <span className="p-3 border rounded-lg bg-green-500 text-white ">
+          <span className="p-3 border rounded-lg bg-secondary text-white ">
             Sign Up Now
           </span>
         </Link>
       </div>
-      
+
       <div className="md:w-1/4  lg:w-2/4 sm:w-1/4">
-        <img src="/img/heroimg.svg" alt="" className="bg-blend-overlay w-full h-full " />
+        <img
+          src="/img/heroimg.svg"
+          alt=""
+          className="bg-blend-overlay w-full h-full "
+        />
       </div>
     </div>
   );

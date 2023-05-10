@@ -10,9 +10,9 @@ const NavLinks = () => {
     <>
       {links.map((link) => (
         <div>
-          <div className="px-3 text-left md:cursor-pointer group">
+          <div className="px-3 text-left md:cursor-pointer group z-50">
             <h1
-              className="py-7 flex justify-between items-center md:pr-0 pr-5 group hover:text-green-500"
+              className="py-7 flex justify-between items-center md:pr-0 pr-5 group hover:text-secondary"
               onClick={() => {
                 navigate(link.link)
                 heading !== link.name ? setHeading(link.name) : setHeading("");
@@ -33,12 +33,12 @@ const NavLinks = () => {
             </h1>
             {link.submenu && (
               <div>
-                <div className="absolute top-10 hidden group-hover:md:block hover:md:block">
+                <div className="absolute top-10 hidden group-hover:md:block hover:md:block z-50">
                   <div className="p-5 gap-10">
                     {link.sublinks.map((mysublinks) => (
                       <div>
                         {mysublinks.sublink.map((slink) => (
-                          <li className="text-sm text-gray-600 my-2.5 hover:text-green-500">
+                          <li className="text-sm text-gray-600 my-2.5 hover:text-secondary">
                             <Link to={slink.link}>{slink.name}</Link>
                           </li>
                         ))}
@@ -60,7 +60,7 @@ const NavLinks = () => {
               <div>
                 <div>
                   {slinks.sublink.map((slink) => (
-                    <li className="py-3 pl-14 hover:text-green-500">
+                    <li className="py-3 pl-14 hover:text-secondary">
                       <Link to={slink.link}>{slink.name}</Link>
                     </li>
                   ))}
