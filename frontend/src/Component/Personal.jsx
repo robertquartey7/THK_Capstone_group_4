@@ -4,7 +4,7 @@ function Personal() {
   return (
     <div>
       <div className="container px-5  mx-auto flex w-full h-full">
-        <form className="bg-white rounded-lg p-4 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
+        <form className="bg-white rounded-lg p-4 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative  shadow-md">
           <span>Contact Details</span>
           <div className="relative w-60 h-60 m-auto">
             <svg
