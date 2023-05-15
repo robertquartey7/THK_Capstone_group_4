@@ -6,7 +6,7 @@ export default function MultipleItems() {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 3,
   };
   return (
@@ -14,31 +14,59 @@ export default function MultipleItems() {
       <h2> Multiple items </h2>
       <Slider {...settings}>
         <div>
-          <h3>1</h3>
+          {/* <h3>1</h3> */}
+          <img
+            className="image"
+            src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
+          />
         </div>
         <div>
-          <h3>2</h3>
+          <img
+            className="image"
+            src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
+          />
         </div>
         <div>
-          <h3>3</h3>
+          <img
+            className="image"
+            src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
+          />
         </div>
         <div>
-          <h3>4</h3>
+          <img
+            className="image"
+            src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
+          />
         </div>
         <div>
-          <h3>5</h3>
+          <img
+            className="image"
+            src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
+          />
         </div>
         <div>
-          <h3>6</h3>
+          <img
+            className="image"
+            src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
+          />
         </div>
         <div>
-          <h3>7</h3>
+          <img
+            className="image"
+            src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
+          />
         </div>
         <div>
-          <h3>8</h3>
+          <img
+            className="image"
+            src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
+          />
         </div>
         <div>
-          <h3>9</h3>
+          <img
+            className="image"
+            src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
+          />
         </div>
       </Slider>
     </div>
