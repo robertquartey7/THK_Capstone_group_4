@@ -1,8 +1,12 @@
-import React from 'react'
+import MultipleItems from "../Component/Slider";
+
 
 function Product() {
   return (
-    <div>Product</div>
+    <div>
+      Product
+     <MultipleItems /> 
+      </div>
   )
 }
 
