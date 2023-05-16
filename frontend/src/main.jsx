@@ -20,6 +20,7 @@ import Product from "./Pages/Product";
 import LocateComp from "./Component/LocateComp";
 import Card from "./Component/Card";
 import PaymentMethod from "./Component/PaymentMethod/PaymentMethod";
+import Stores from "./Pages/Stores";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,12 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
-    
       },
       {
         path: "/signup",
         element: <Signup />,
-        
       },
       {
         path: "/account",
@@ -64,6 +63,13 @@ const router = createBrowserRouter([
       {
         path: "/shop",
         element: <Shop />,
+        children: [
+          {},
+          {
+            path: "stores",
+            element: <Stores />,
+          },
+        ],
       },
       {
         path: "/locate",
