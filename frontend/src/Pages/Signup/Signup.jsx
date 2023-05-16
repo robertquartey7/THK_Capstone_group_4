@@ -30,14 +30,14 @@ export default function Signup() {
     console.log(user)
 
     axios.post(`${import.meta.env.VITE_APP_URL}auth/signup`, {
-      displayName: `${user.fname} ${user.lname}`,
-      // firstName: user.firstName, 
-      // lastName: user.lastName,
+      
+      firstName: user.firstName, 
+      lastName: user.lastName,
       email:  user.email,
       number: user.number,
       dob: user.dob,
-      address:user. address,
-      password:user. password,
+      address:user.address,
+      password:user.password,
     })
     .then((res) => {
       console.log(res.data);
@@ -59,7 +59,9 @@ export default function Signup() {
       <div className="pl-4 flex justify-start mx-10 flex-col text-blue-900 font-semibold">
         <p className="text-3xl">SignUp</p>
       </div>
+
        <div className="container px-5  mx-auto flex w-full h-full">
+        
         <form className="bg-white rounded-lg p-4 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md" onSubmit={handleSubmit}>
           
           <div className="relative mb-1 flex  justify-between">
