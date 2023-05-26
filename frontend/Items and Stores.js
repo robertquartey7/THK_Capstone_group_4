@@ -492,7 +492,6 @@ const items2 = [
 
 ]
 
-//delivery & pickup items (I put in the titles for this item section b/c it was not on figma)
 
 const items3 = [
 
@@ -723,6 +722,139 @@ const items3 = [
 
 ]
 
+//stores  
+
+const stores = [
+
+    {
+        name:"La Bodega",
+        number: "718-437-4081",
+        location: "978 McDonald Ave, Brooklyn, NY 11230",
+        imageUrl:"https://res.cloudinary.com/dsewihcvy/image/upload/v1684961529/stores/la_Bodega_jefcbi.png",
+        storehours:"9 AM–9 PM",
+        isActive:true
+    },
+    {
+        name:"Sam's Deli",
+        number: "212-727-9521",
+        location: "275 West 4th Street, New York, NY 10014",
+        imageUrl:"https://res.cloudinary.com/dsewihcvy/image/upload/v1684961530/stores/Sam_s_Deli_lr3oxa.png",
+        storehours:"5 AM–12 AM",
+        isActive:true
+    },
+    {
+        name:"Luigi Gourmet",
+        number: "718-372-1260",
+        location: "1858 Bath Ave, Brooklyn, NY 11214",
+        imageUrl:"https://res.cloudinary.com/dsewihcvy/image/upload/v1684961529/stores/Luigi_Gourmet_sqv0si.png",
+        storehours:"7 AM–10 PM",
+        isActive:true
+    },
+    {
+        name:"Corner Gourmet",
+        number: "212-406-2200",
+        location: "66 W Broadway F, New York, NY 10007",
+        imageUrl:"https://res.cloudinary.com/dsewihcvy/image/upload/v1684961528/stores/Corner_Gourmet_x18n7g.png",
+        storehours:"6 AM–7 PM",
+        isActive:true
+    },
+    {
+        name:"Berry Bodega",
+        number: "212-353-8540",
+        location: "922 Broadway, New York, NY 10010",
+        imageUrl:"https://res.cloudinary.com/dsewihcvy/image/upload/v1684961528/stores/Berry_Bodega_femiup.png",
+        storehours:"7 AM–10 PM",
+        isActive:true
+    },
+    {
+        name:"Maria Store",
+        number: "718-277-3828",
+        location: "889 Sutter Ave, Brooklyn, NY 11207",
+        imageUrl:"https://res.cloudinary.com/dsewihcvy/image/upload/v1684961529/stores/Maria_Store_btufok.png",
+        storehours:"8 AM–10 PM",
+        isActive:true
+    },
+    {
+        name:"Basics Market",
+        number: "718-452-1367",
+        location: "474 Wilson Ave, Brooklyn, NY 11221",
+        imageUrl:"https://res.cloudinary.com/dsewihcvy/image/upload/v1684961528/stores/Basics_Market_axzper.png",
+        storehours:"5 AM–8 PM",
+        isActive:true
+    },
+    {
+        name:"Fernandez",
+        number: "347-431-2572",
+        location: "890 E 167th St, Bronx, NY 10459",
+        imageUrl:"https://res.cloudinary.com/dsewihcvy/image/upload/v1684961529/stores/Fernandez_i12gxe.png",
+        storehours:"7 AM–9:30 PM",
+        isActive:true
+    },
+    {
+        name:"Lyla's Bodega",
+        number: "212-799-1555",
+        location: "177 W 83rd St, New York, NY 10024",
+        imageUrl:"https://res.cloudinary.com/dsewihcvy/image/upload/v1684961529/stores/Lyla_s_Bodega_fwl1nt.png",
+        storehours:"7 AM–7 PM",
+        isActive:true
+    },
+    {
+        name:"NY Deli",
+        number: "347-569-2286",
+        location: "1019 McDonald Ave, Brooklyn, NY 11230",
+        imageUrl:"https://res.cloudinary.com/dsewihcvy/image/upload/v1684961529/stores/NY_Deli_mqjpgi.png",
+        storehours:"7 AM–5 PM",
+        isActive:true
+    },
+    {
+        name:"Mario Deli",
+        number: "718-326-7973",
+        location: "9046 161st St, Jamaica, NY 11432",
+        imageUrl:"https://res.cloudinary.com/dsewihcvy/image/upload/v1684961529/stores/Mario_Deli_ax3f0a.png",
+        storehours:"8 AM-7 PM",
+        isActive:true
+    },
+    {
+        name:"Express Deli",
+        number: "718-376-9043",
+        location: "478 Kings Hwy, Brooklyn, NY 11223",
+        imageUrl:"https://res.cloudinary.com/dsewihcvy/image/upload/v1684961529/stores/Express_Deli_yscycs.png",
+        storehours:"Open 24 hrs",
+        isActive:true
+    },
+    {
+        name:"Ditmar’s Foodmart",
+        number: "718-255-6788",
+        location: "4614 Ditmars Blvd, Queens, NY 11105",
+        imageUrl:"https://res.cloudinary.com/dsewihcvy/image/upload/v1684976113/stores/Ditmar_s_Foodmart_skehez.png",
+        storehours:"7 AM–9:30 PM",
+        isActive:true
+    },
+    {
+        name:"Sunny & Annie's Deli",
+        number: "212-677-3131",
+        location: "94 Avenue B, New York, NY 10009",
+        imageUrl:"https://res.cloudinary.com/dsewihcvy/image/upload/v1684975457/stores/Sunny_Annie_s_Deli_muu85b.png",
+        storehours:"",
+        isActive:true
+    },
+    {
+        name:"Guerrero Market",
+        number: "718-295-4273",
+        location: "2239 Adams Pl, Bronx, NY 10457",
+        imageUrl:"https://res.cloudinary.com/dsewihcvy/image/upload/v1684972671/stores/Guerrero_Deli_Mini_Market_bvt2s2.png",
+        storehours:"7 AM–11:45 PM",
+        isActive:true
+    },
+    {
+        name:"Bronx Gourmet Deli",
+        number: "718-561-1334",
+        location: "921 E 180th St, Bronx, NY 10460",
+        imageUrl:"https://res.cloudinary.com/dsewihcvy/image/upload/v1685142793/stores/Bronx_Gourmet_Deli_erajo7.jpg",
+        storehours:"5 AM–12 AM",
+        isActive:true
+    },
+]
 
 
 
@@ -739,3 +871,21 @@ const items3 = [
 //     isActive Boolean
     
 //   }
+
+// model Store {
+//     id         String   @id @default(uuid())
+//     userId     String   
+//     user       User     @relation(fields: [userId], references: [id])
+//     name       String
+//     number     String
+//     location   String
+//     imageURL   String?
+//     reviews    String?
+//     storehours String?
+//     item       Item[]
+//     Review     Review[]
+  
+  
+//     @@index([userId])
+//   }
+
