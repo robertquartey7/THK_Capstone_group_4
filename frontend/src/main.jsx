@@ -15,12 +15,13 @@ import Locate from "./Pages/Locate";
 import Shop from "./Pages/Shop";
 import Personal from "./Component/Personal";
 import Accessibility from "./Component/Accessibility";
-
+import 'react-toastify/dist/ReactToastify.css';
 import Product from "./Pages/Product";
 import LocateComp from "./Component/LocateComp";
 import Card from "./Component/Card";
 import PaymentMethod from "./Component/PaymentMethod/PaymentMethod";
 import Stores from "./Pages/Stores";
+import UserProfile from "./Component/UserProfile";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         path: "/account",
         element: <Account />,
         children: [
+          {
+            path: "",
+            element: <UserProfile />,
+          },
           {
             path: "personal",
             element: <Personal />,

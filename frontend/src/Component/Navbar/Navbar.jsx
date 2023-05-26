@@ -7,11 +7,12 @@ const Navbar = () => {
     <nav className="bg-white">
       <div className="flex items-center justify-around">
         <div className="z-50 p-5 md:w-auto w-full flex justify-between">
-          <img
+       <Link to={'/'}>
+       <img
             src={"/img/logo.png"}
             alt="logo"
             className="md:cursor-pointer h-9"
-          />
+          /></Link>
           <div className="text-3xl md:hidden" onClick={() => setOpen(!open)}>
             <ion-icon name={`${open ? "close" : "menu"}`}></ion-icon>
           </div>

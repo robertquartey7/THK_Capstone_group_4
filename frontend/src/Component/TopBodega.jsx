@@ -13,7 +13,7 @@ function TopBodega() {
   }
  
 
-  console.log(data);
+  
   return (
     <div className="px-20 flex-col py-5 shadow-lg mt-10">
       <div className="py-10">

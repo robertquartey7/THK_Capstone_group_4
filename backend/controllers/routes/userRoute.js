@@ -28,11 +28,8 @@ router.post("/auth/signup", async (req, res) => {
         const hashPassword = await argon2.hash(req.body.password);
         const newUser = await prisma.user.create({
           data: {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            number: req.body.number,
+            ...req.body,
             password: hashPassword,
-            email: req.body.email,
           },
         });
 
@@ -90,6 +87,8 @@ router.post("/auth/login", async (req, res) => {
               email: foundUser.email,
               number: foundUser.number,
               role: foundUser.role,
+              address: foundUser.address,
+              dob: foundUser.dob,
             },
 
             process.env.SECRET_KEY
