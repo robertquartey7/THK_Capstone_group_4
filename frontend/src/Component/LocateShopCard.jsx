@@ -3,10 +3,10 @@ import React from "react";
 function LocateShopCard() {
   return (
     <>
-      <div class="max-w-sm rounded overflow-hidden shadow-lg">
+      <div className="max-w-sm rounded overflow-hidden shadow-lg">
         <div className="relative">
           <img
-            class="w-full h-36"
+            className="w-full h-36"
             src="/img/store.png"
             alt="Sunset in the mountains"
           />
@@ -28,7 +28,7 @@ function LocateShopCard() {
           </span>
         </div>
 
-        <div class="">
+        <div className="">
           <div>
             <div>
               <span>store name</span>
@@ -37,7 +37,7 @@ function LocateShopCard() {
               <span>
                 <span>Opens</span> . closes at 7:00pm
               </span>
-              <span class="">7 miles</span>
+              <span className="">7 miles</span>
             </div>
 
             {/* favorite */}

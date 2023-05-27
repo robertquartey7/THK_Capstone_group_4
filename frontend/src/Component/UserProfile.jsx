@@ -1,9 +1,14 @@
 import React from "react";
-
-
-
+import axios from 'axios'
+import useSWR from 'swr'
+import { fetcher } from "../utlis/dataFetch";
 function UserProfile() {
+  const { data, error, isLoading, isValidating } = useSWR(
+    "/v1/auth",
+    fetcher
+  );
 
+  if(data) console.log(data);
 
   return (
     <div className="border h-full flex flex-col bg-primary py-10">

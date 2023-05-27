@@ -6,6 +6,7 @@ import { LoadScript } from "@react-google-maps/api";
 
 function App() {
   const [places] = useState(["places"]);
+  
   return (
     <div>
       <LoadScript

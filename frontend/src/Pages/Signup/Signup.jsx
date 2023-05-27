@@ -2,8 +2,8 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { LoadScript, Autocomplete } from "@react-google-maps/api";
-import { ToastContainer, toast } from "react-toastify";
+import {Autocomplete } from "@react-google-maps/api";
+import { toast } from "react-toastify";
 export default function Signup() {
  
  
@@ -39,7 +39,7 @@ export default function Signup() {
   }
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(error);
+   
 
    try {
     const newUser = await axios
@@ -226,15 +226,3 @@ export default function Signup() {
   );
 }
 
-// export default Signup
-// model User {
-//   id        String   @id @default(uuid())
-//   firstName String
-//   lastName  String
-//   email     String
-//   password  String
-//   number    String
-//   role      Role     @default(BASIC)
-//   Store     Store?
-//   Cart      Cart[]
-//   Review    Review[]

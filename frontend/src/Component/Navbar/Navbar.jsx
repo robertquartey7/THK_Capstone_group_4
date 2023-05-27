@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import NavLinks from "./NavLink";
+import Cookie from "js-cookie";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+
+  function logout() {
+    console.log("hi");
+    Cookie.remove("token");
+  }
+
   return (
     <nav className="bg-white">
       <div className="flex items-center justify-around">
         <div className="z-50 p-5 md:w-auto w-full flex justify-between">
-       <Link to={'/'}>
-       <img
-            src={"/img/logo.png"}
-            alt="logo"
-            className="md:cursor-pointer h-9"
-          /></Link>
+          <Link to={"/"}>
+            <img
+              src={"/img/logo.png"}
+              alt="logo"
+              className="md:cursor-pointer h-9"
+            />
+          </Link>
           <div className="text-3xl md:hidden" onClick={() => setOpen(!open)}>
             <ion-icon name={`${open ? "close" : "menu"}`}></ion-icon>
           </div>
@@ -26,18 +34,26 @@ const Navbar = () => {
           </li>
           <NavLinks />
         </ul>
-        <div className="md:flex hidden py-5 gap-2">
-          <Link to='/signup'>
-            <span className="p-3 border rounded-xl px-4  border-secondary bg-secondary text-white hover:bg-opacity-80">
-              SignUp
+        {!Cookie.get("token") ? (
+          <div className="md:flex hidden py-5 gap-2">
+            <Link to="/signup">
+              <span className="p-3 border rounded-xl px-4  border-secondary bg-secondary text-white hover:bg-opacity-80">
+                SignUp
+              </span>
+            </Link>
+            <Link to={"/login"}>
+              <span className="p-3 border rounded-xl px-4  border-secondary text-secondary hover:bg-opacity-80">
+                Login
+              </span>
+            </Link>
+          </div>
+        ) : (
+          <div className="md:flex hidden py-5 gap-2">
+            <span className="pointer" onClick={logout}>
+              Logout
             </span>
-          </Link>
-          <Link to={'/login'}>
-            <span className="p-3 border rounded-xl px-4  border-secondary text-secondary hover:bg-opacity-80">
-              Login
-            </span>
-          </Link>
-        </div>
+          </div>
+        )}
         {/* Mobile nav */}
         <ul
           className={`
@@ -51,18 +67,26 @@ const Navbar = () => {
             </Link>
           </li>
           <NavLinks />
-          <div className="py-5 flex gap-2">
-            <Link to={'/signup'}>
-              <span className="p-3 border rounded-xl px-4  border-secondary bg-secondary text-white hover:bg-opacity-80">
-                SignUp
+          {!Cookie.get("token") ? (
+            <div className="md:flex hidden py-5 gap-2">
+              <Link to="/signup">
+                <span className="p-3 border rounded-xl px-4  border-secondary bg-secondary text-white hover:bg-opacity-80">
+                  SignUp
+                </span>
+              </Link>
+              <Link to={"/login"}>
+                <span className="p-3 border rounded-xl px-4  border-secondary text-secondary hover:bg-opacity-80">
+                  Login
+                </span>
+              </Link>
+            </div>
+          ) : (
+            <div className="md:flex hidden py-5 gap-2">
+              <span className="pointer" onClick={logout}>
+                Logout
               </span>
-            </Link>
-            <Link to={'/login'}>
-              <span className="p-3 border rounded-xl px-4  border-secondary text-secondary hover:bg-opacity-80">
-                Login
-              </span>
-            </Link>
-          </div>
+            </div>
+          )}
         </ul>
       </div>
     </nav>

@@ -1,17 +1,19 @@
 import React from "react";
-import { GoogleMap, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, Marker } from "@react-google-maps/api";
+import { getUserLocation } from "../utlis/utlis";
+
 function Map() {
+  const { lat, lng } = getUserLocation();
   const containerStyle = {
     width: "100%",
     height: "100%",
   };
 
   const center = {
-    lat: 40.7128,
-    lng: 74.006,
+    lat,
+    lng,
   };
 
- 
   return (
     <div className="h-full">
       <GoogleMap
@@ -20,8 +22,8 @@ function Map() {
         zoom={10}
         mapContainerClassName=""
       >
-        
         {/* Child components, such as markers, info windows, etc. */}
+        <Marker position={center} />
         <></>
       </GoogleMap>
     </div>
