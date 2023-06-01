@@ -1,13 +1,14 @@
 import React from "react";
 
-function LocateShopCard() {
+function LocateShopCard(props) {
+
   return (
     <>
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
+      <div className="rounded overflow-hidden shadow-lg flex flex-col gap-1 p-1 mb-4 hover:shadow-xl hover:-translate-y-1 transition-all" >
         <div className="relative">
           <img
             className="w-full h-36"
-            src="/img/store.png"
+            src={props.props.imageUrl}
             alt="Sunset in the mountains"
           />
           <span className="absolute top-2 right-3 ">
@@ -31,11 +32,11 @@ function LocateShopCard() {
         <div className="">
           <div>
             <div>
-              <span>store name</span>
+              <span>{props.props.name}</span>
             </div>
-            <div>
+            <div className="flex gap-2">
               <span>
-                <span>Opens</span> . closes at 7:00pm
+                <span>{props.props.storehours}</span>
               </span>
               <span className="">7 miles</span>
             </div>

@@ -33,7 +33,7 @@ model Store {
   name       String
   number     String
   location   String
-  imageURL   String?
+  imageUrl   String?
   reviews    String?
   storehours String?
   item       Item[]
@@ -47,13 +47,17 @@ model Item {
   name     String
   category String
   store    Store   @relation(fields: [storeId], references: [id])
-  storeId  String  @unique
-  price    Int
+  storeId  String  
+  price    String?
   imageUrl String?
-  cartId   String? @unique
+  cartId   String? 
   cart     Cart?   @relation(fields: [cartId], references: [id])
   isActive Boolean
+
+  @@index([storeId])
+  @@index([cartId])
 }
+
 
 enum Role {
   BASIC

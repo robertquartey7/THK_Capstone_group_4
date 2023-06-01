@@ -31,7 +31,48 @@ router.get("/items", async (_req, res) => {
   }
 });
 
-// create an item
+// create an all items from a store
+router.get("/store/:storeId/items", async (req, res) => {
+  try {
+    let itemGroup = null
+    if(req.query.group ==='true'){
+
+      itemGroup = await prisma.item.groupBy({
+        by:['category'],
+        
+      })
+      
+    }
+
+    const items = await prisma.item.findMany({
+      where:{
+        storeId:req.params.storeId
+      },
+      include:{
+        store:true,
+       
+      }
+    });
+
+    if (items) {
+      console.log(itemGroup)
+      console.log(items)
+      res.status(200).json({
+        success: true,
+        data: items,
+        groupBy:itemGroup
+      
+      });
+    }
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+    });
+  }
+});
+
 //store/:id/items:
 router.post(
   "/stores/:id/items",

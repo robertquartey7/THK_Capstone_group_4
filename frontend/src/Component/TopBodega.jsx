@@ -2,17 +2,13 @@ import React from "react";
 import { fetcher } from "../utlis/dataFetch";
 import useSWR from "swr";
 import Loading from "./Loading";
-
+import { Link } from "react-router-dom";
 
 function TopBodega() {
-
-
   const { data, error, isLoading, isValidating } = useSWR(
     "/v1/stores",
     fetcher
   );
-
-
 
   if (isLoading) {
     return <Loading />;
@@ -27,13 +23,18 @@ function TopBodega() {
         {data ? (
           data.data?.map((element) => {
             return (
-              <div key={element.id}>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src={element.imageURL}
-                  alt=""
-                />
-                <p>{element.name}</p>
+              <div
+                key={element.id}
+                className="hover:shadow-lg flex flex-col items-center p-2"
+              >
+                <Link to={`/locate/products/${element.id}`}>
+                  <img
+                    className="h-auto max-w-full rounded-lg "
+                    src={element.imageUrl}
+                    alt=""
+                  />
+                  <p>{element.name}</p>
+                </Link>
               </div>
             );
           })

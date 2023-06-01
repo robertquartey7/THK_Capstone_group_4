@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NavLinks from "./NavLink";
 import Cookie from "js-cookie";
+import { useSelector, useDispatch } from "react-redux";
+import { setAuthenticated } from "../../utlis/redux/userSlice";
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (Cookie.get("token")) {
+      dispatch(setAuthenticated({ token: Cookie.get("token") }));
+    }
+  }, [isAuthenticated]);
+  
   function logout() {
     console.log("hi");
     Cookie.remove("token");
@@ -67,7 +78,7 @@ const Navbar = () => {
             </Link>
           </li>
           <NavLinks />
-          {!Cookie.get("token") ? (
+          {!isAuthenticated ? (
             <div className="md:flex hidden py-5 gap-2">
               <Link to="/signup">
                 <span className="p-3 border rounded-xl px-4  border-secondary bg-secondary text-white hover:bg-opacity-80">

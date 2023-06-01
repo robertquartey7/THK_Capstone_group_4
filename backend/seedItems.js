@@ -1,5 +1,5 @@
 //product items
-const items1 = [
+export const items1 = [
     {
         name:"Plantains-5pcs",
         category: "Fruits & Veggies",
@@ -263,7 +263,7 @@ const items1 = [
 
 // Deals Items - categories here are broken up by stores as I went according to the figma page, also I only included the new deal prices not the prices that were scratched off. 
 
-const items2 = [
+export const items2 = [
 
     {
         name:"Gain Laundry Scent-26.5oz",
@@ -493,7 +493,7 @@ const items2 = [
 ]
 
 
-const items3 = [
+export const items3 = [
 
     {
         name:"Arizona Green Tea Can",
@@ -724,7 +724,7 @@ const items3 = [
 
 //stores  
 
-const stores = [
+export const stores = [
 
     {
         name:"La Bodega",
