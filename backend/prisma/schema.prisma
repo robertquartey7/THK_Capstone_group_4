@@ -18,6 +18,8 @@ model User {
   email     String
   password  String
   number    String
+  dob       String
+  address   String
   role      Role     @default(BASIC)
   Store     Store[]
   Cart      Cart[]
@@ -26,17 +28,16 @@ model User {
 
 model Store {
   id         String   @id @default(uuid())
-  userId     String   
+  userId     String
   user       User     @relation(fields: [userId], references: [id])
   name       String
   number     String
   location   String
-  imageURL   String?
+  imageUrl   String?
   reviews    String?
   storehours String?
   item       Item[]
   Review     Review[]
-
 
   @@index([userId])
 }
@@ -46,14 +47,17 @@ model Item {
   name     String
   category String
   store    Store   @relation(fields: [storeId], references: [id])
-  storeId  String  @unique
-  price    Int
+  storeId  String  
+  price    String?
   imageUrl String?
-  cartId   String? @unique
+  cartId   String? 
   cart     Cart?   @relation(fields: [cartId], references: [id])
   isActive Boolean
-  
+
+  @@index([storeId])
+  @@index([cartId])
 }
+
 
 enum Role {
   BASIC

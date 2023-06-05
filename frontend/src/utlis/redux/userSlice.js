@@ -3,12 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 export const user = createSlice({
   name: "user",
   initialState: {
-    firstName: "",
-    lastname: "",
-    number: "",
-    token: "",
-    role: "",
-    email: "",
     isAuthenticated: false,
   },
   reducers: {
@@ -21,5 +15,5 @@ export const user = createSlice({
   },
 });
 
-export const { setUserProfile } = user.actions;
-export default user;
+export const { setUserProfile, setAuthenticated } = user.actions;
+export default user.reducer;

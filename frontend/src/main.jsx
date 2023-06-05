@@ -15,12 +15,14 @@ import Locate from "./Pages/Locate";
 import Shop from "./Pages/Shop";
 import Personal from "./Component/Personal";
 import Accessibility from "./Component/Accessibility";
-
+import "react-toastify/dist/ReactToastify.css";
 import Product from "./Pages/Product";
 import LocateComp from "./Component/LocateComp";
 import Card from "./Component/Card";
 import PaymentMethod from "./Component/PaymentMethod/PaymentMethod";
 import Stores from "./Pages/Stores";
+import UserProfile from "./Component/UserProfile";
+import Checkout from "./Pages/Checkout";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,9 +45,17 @@ const router = createBrowserRouter([
         element: <Signup />,
       },
       {
+        path: "/checkout",
+        element: <Checkout />,
+      },
+      {
         path: "/account",
         element: <Account />,
         children: [
+          {
+            path: "",
+            element: <UserProfile />,
+          },
           {
             path: "personal",
             element: <Personal />,
@@ -80,7 +90,7 @@ const router = createBrowserRouter([
             element: <LocateComp />,
           },
           {
-            path: "products",
+            path: "products/:id",
             element: <Product />,
           },
         ],
@@ -90,11 +100,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider>
-        <RouterProvider router={router} />
-      </ThemeProvider>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  </Provider>
 );

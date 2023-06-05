@@ -29,7 +29,7 @@ router.post(
           success: false,
           message: "User already has a store",
         });
-      } else {
+      }else {
         console.log(req.user.id);
         const createStore = await prisma.store.create({
           data: {
