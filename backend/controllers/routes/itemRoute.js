@@ -3,6 +3,7 @@ import { prisma } from "../../db/index.js";
 import passport from "passport";
 import { fileUpload } from "../../utils/uploadFile.js";
 import multer from "multer";
+import _ from 'lodash'
 
 const upload = multer();
 const router = express.Router();
@@ -41,9 +42,10 @@ router.get("/store/:storeId/items", async (req, res) => {
         by:['category'],
         
       })
+
+      
       
     }
-
     const items = await prisma.item.findMany({
       where:{
         storeId:req.params.storeId
@@ -54,13 +56,16 @@ router.get("/store/:storeId/items", async (req, res) => {
       }
     });
 
+
+    let data = _.chain(items).groupBy("category").map((value, key) => ({ category: key, stores: value }))
+    .value()
+
     if (items) {
-      console.log(itemGroup)
-      console.log(items)
+     
       res.status(200).json({
         success: true,
-        data: items,
-        groupBy:itemGroup
+        data,
+     
       
       });
     }

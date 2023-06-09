@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const storeInit = {
   marker: [],
+  
+  
 };
 const storeSlice = createSlice({
   name: "store",

@@ -4,8 +4,12 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Cookie from "js-cookie";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setAuthenticated } from "../../utlis/redux/userSlice";
 
 export default function Login() {
+  const dispatch = useDispatch()
+
   const navigate = useNavigate()
   const [user, setUser] = useState({
     email: "",
@@ -38,6 +42,7 @@ export default function Login() {
         toast.success("Login Successful", {
           position: toast.POSITION.TOP_RIGHT,
         });
+        dispatch(setAuthenticated({ isAuthenticated: true,}))
         navigate('/')
       }
     } catch (error) {
@@ -107,7 +112,7 @@ export default function Login() {
               />
             </div>
             <button className="text-white bg-secondary border-0 py-2 px-6 focus:outline-none hover:bg-green-300 rounded text-lg">
-              create account
+              Login
             </button>
           </form>
         </div>

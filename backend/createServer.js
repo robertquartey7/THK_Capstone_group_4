@@ -6,6 +6,7 @@ import setupJWTStrategy from "./auth/index.js";
 import userRoute from "./controllers/routes/userRoute.js";
 import storeRoute from "./controllers/routes/storeRoute.js";
 import itemRoute from "./controllers/routes/itemRoute.js";
+import cartRoute from "./controllers/routes/cartRoute.js";
 import passport from "passport";
 
 export const app = express();
@@ -22,6 +23,8 @@ app.use("/", morgan("tiny"));
 app.use("/v1", itemRoute);
 app.use("/v1", userRoute);
 app.use("/v1", storeRoute);
+app.use("/v1", cartRoute);
+
 
 
 

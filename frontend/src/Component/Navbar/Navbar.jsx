@@ -10,6 +10,7 @@ const Navbar = () => {
 
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (Cookie.get("token")) {
       dispatch(setAuthenticated({ token: Cookie.get("token") }));
@@ -18,7 +19,9 @@ const Navbar = () => {
   
   function logout() {
     console.log("hi");
+    dispatch(setAuthenticated({ isAuthenticated: false}))
     Cookie.remove("token");
+
   }
 
   return (

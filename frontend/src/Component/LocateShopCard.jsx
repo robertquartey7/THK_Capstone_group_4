@@ -1,16 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { XCircleIcon } from "@heroicons/react/24/outline";
+import { useSelector, useDispatch,  } from "react-redux";
 
-function LocateShopCard(props) {
+import {setDirection} from "../utlis/redux/userSlice";
+function LocateShopCard({props}) {
+  const [directionState, setDirectionState] = useState(false);
+  
+
+  const { lat, lng } = useSelector((state) => state.user.location);
+  const dispatch = useDispatch();
+  const directionService = new google.maps.DirectionsService();
+
+
+
+
+  async function getDirection() {
+    setDirectionState(true);
+    const result = await directionService.route({
+      origin: {
+        lat,
+        lng,
+      },
+      destination: props.props.location,
+      travelMode: google.maps.TravelMode.DRIVING,
+    });
+
+    dispatch(
+      setDirection({ direction: result})
+    );
+
+
+  }
+
+
+  function cancelDirection(){
+    console.log('cacel')
+    setDirectionState(false)
+    dispatch(setDirection({direction:null}))
+    console.log(directionState)
+  }
 
   return (
     <>
-      <div className="rounded overflow-hidden shadow-lg flex flex-col gap-1 p-1 mb-4 hover:shadow-xl hover:-translate-y-1 transition-all" >
+      <div className="rounded overflow-hidden shadow-lg flex flex-col gap-1 p-1 mb-4 hover:shadow-xl hover:-translate-y-1 transition-all">
         <div className="relative">
-          <img
-            className="w-full h-36"
-            src={props.props.imageUrl}
-            alt="Sunset in the mountains"
-          />
+          <Link to={`/locate/products/${props.id}`}>
+            <img
+              className="w-full h-36"
+              src={props.imageUrl}
+              alt="Sunset in the mountains"
+            />
+          </Link>
+
           <span className="absolute top-2 right-3 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -29,21 +71,36 @@ function LocateShopCard(props) {
           </span>
         </div>
 
-        <div className="">
+        <div className="flex justify-between p-1 items-center">
           <div>
             <div>
-              <span>{props.props.name}</span>
+              <span>{props.name}</span>
             </div>
             <div className="flex gap-2">
               <span>
-                <span>{props.props.storehours}</span>
+                <span>{props.storehours}</span>
               </span>
-              <span className="">7 miles</span>
+              <span className="">{}</span>
             </div>
 
             {/* favorite */}
-            <span></span>
           </div>
+
+          {directionState !== true ? (
+            <span
+              className="border p-1 rounded-lg bg-primary text-white cursor-pointer"
+              onClick={getDirection}
+            >
+              Get Direction
+            </span>
+          ) : (
+            <span
+              className="mr-5 border  rounded-full bg-primary text-white cursor-pointer"
+              onClick={cancelDirection}
+            >
+              <XCircleIcon className="h-7" />
+            </span>
+          )}
         </div>
       </div>
     </>
