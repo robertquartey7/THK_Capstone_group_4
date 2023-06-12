@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react' 
 import './History.css'
-function History() {
-  return (
-    <div>
 
+function History(key, defaultValue) {
+  
+  const [value, setValue] = useState(
+    JSON.parse(localStorage.getItem(key, defaultValue))
+  );
 
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [value, key]);
 
-        <div>
-            <p>
+  return [value, setValue];
 
-            </p>
-        </div>
-    </div>
-  )
 }
 
-export default History
+export default History;
