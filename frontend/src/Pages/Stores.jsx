@@ -19,14 +19,23 @@ const {data, isLoading, error} = useSWR("/v1/stores", fetcher)
 
   return (
     <div class="grid grid-cols-2 gap-2">
-      <div class =" bg-gray-200 p-3">01</div>
-      <div class =" bg-gray-200 p-3">02</div>
-      <div class =" bg-gray-200 p-3">03</div>
-      <div class =" bg-gray-200 p-3">04</div>
-      <div class =" bg-gray-200 p-3">05</div>
-      <div class =" bg-gray-200 p-3">06</div>
-      <div class =" bg-gray-200 p-3">07</div>
-      <div class =" bg-gray-200 p-3">08</div>
+      <p class =" text-green-500 font-semibold place-content: start">Bodegas in your Area</p>
+      <div class =" bg-gray-200 p-3">La Bodega</div>
+      <div class =" bg-gray-200 p-3">Sam's Deli</div>
+      <div class =" bg-gray-200 p-3">Luigi Gourmet</div>
+      <div class =" bg-gray-200 p-3">Corner Gourmet</div>
+      <div class =" bg-gray-200 p-3">Berry Bodega</div>
+      <div class =" bg-gray-200 p-3">Maria Store</div>
+      <div class =" bg-gray-200 p-3">Basics Market</div>
+      <div class =" bg-gray-200 p-3">Fernandez</div>
+      <div class =" bg-gray-200 p-3">Lyla's Bodega</div>
+      <div class =" bg-gray-200 p-3">NY Deli</div>
+      <div class =" bg-gray-200 p-3">Mario Deli</div>
+      <div class =" bg-gray-200 p-3">Express Deli</div>
+      <div class =" bg-gray-200 p-3">Ditmar’s Foodmart</div>
+      <div class =" bg-gray-200 p-3">Sunny & Annie's Deli</div>
+      <div class =" bg-gray-200 p-3">Guerrero Market</div>
+      <div class =" bg-gray-200 p-3">Bronx Gourmet Deli</div>
       </div>
 
   );
