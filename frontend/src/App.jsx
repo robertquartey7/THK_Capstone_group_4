@@ -13,6 +13,7 @@ function App() {
         libraries={places}
         googleMapsApiKey={import.meta.env.VITE_GOOGLE_API_KEY}
       >
+        
         <Navbar />
         <Outlet />
         <ToastContainer />

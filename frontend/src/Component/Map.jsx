@@ -1,19 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { GoogleMap, Marker } from "@react-google-maps/api";
+import { GoogleMap, Marker, DirectionsRenderer } from "@react-google-maps/api";
 import { getUserLocation } from "../utlis/utlis";
 import { useMemo } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setLocation } from "../utlis/redux/userSlice";
 
 function Map({ data }) {
   const [marker, setMarker] = useState([]);
 
+ const direction = useSelector(state=>state.user.direction) 
+  const dispatch = useDispatch()
+
   const { lat, lng } = getUserLocation();
+  
+  dispatch(setLocation({
+    lat,lng
+  }))
+  
+
+  useEffect(()=>{
+    console.log(direction)
+  }, [])
+
+ 
   const containerStyle = {
     width: "100%",
     height: "100%",
   };
 
   const geocoder = new google.maps.Geocoder();
+  
   useEffect(() => {
     setMarker([]);
     data.data.forEach((item) => {
@@ -69,6 +85,8 @@ function Map({ data }) {
               }}
             />
           ))}
+
+          {direction && <DirectionsRenderer directions={direction}/>}
       </GoogleMap>
     </div>
   );

@@ -19,12 +19,14 @@ function LocateComp() {
       <div className="border w-3/5 h-full rounded-lg overflow-hidden shadow-lg">
         {data && <Map data={data} />}
       </div>
-      <div className="w-2/5 h-full  overflow-auto  border border-solid px-2 lg:px-20 ">
+      <div className="w-2/5 h-full  overflow-auto  border border-solid px-2 lg:px-5 ">
         {data &&
           data.data?.map((item) => (
-            <Link to={`/locate/products/${item.id}`} key={item.id}>
-              <LocateShopCard props={item} />
-            </Link>
+            
+           <span key={item.id}>
+               <LocateShopCard props={item} />
+           </span>
+          
           ))}
       </div>
     </div>

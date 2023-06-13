@@ -36,7 +36,7 @@ export const links = [
       {
         sublink: [
           { name: "History", link: "/account/history" },
-          { name: "Setting ", link: "/account/setting" },
+          { name: "Checkout ", link: "/checkout" },
          
         ],
       },
