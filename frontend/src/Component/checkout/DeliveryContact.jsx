@@ -3,7 +3,6 @@ import React from "react";
 function DeliveryContact() {
   return (
     <div>
-      <div></div>
       <div>
         <div className="container px-5  mx-auto flex w-full h-full ">
           <form className="bg-white rounded-lg p-4 px-5` flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative">
@@ -151,7 +150,10 @@ function DeliveryContact() {
                 </label>
               </div>
             </div>
-            <button className="mt-5 text-white bg-secondary border-0 py-2 px-6 focus:outline-none hover:bg-opacity-80 rounded text-lg">
+            <button
+              type="submit"
+              className="mt-5 text-white bg-secondary border-0 py-2 px-6 focus:outline-none hover:bg-opacity-80 rounded text-lg"
+            >
               Continue
             </button>
           </form>

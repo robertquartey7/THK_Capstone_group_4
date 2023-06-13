@@ -1,12 +1,14 @@
-import React from "react";
+import {useSelector} from 'react-redux'
 
 function Total() {
+  const subTotal = useSelector(state=>state.order.subTotal)
+
   return (
     <div className="text-gray-600">
        
       <div className="flex justify-between px mb-2">
         <span>Subtotal</span>
-        <span>$1.00</span>
+        <span>${subTotal}</span>
       </div>
       <hr />
       <div className="flex justify-between px mb-2">

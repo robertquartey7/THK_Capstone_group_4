@@ -31,8 +31,7 @@ function Product() {
       "orderCount",
       parseInt(localStorage.getItem("orderCount")) + 1
     );
-  }https://res.cloudinary.com/dsewihcvy/image/upload/v1684961528/stores/Basics_Market_axzper.png
-
+  }
   useEffect(() => {
     if (!localStorage.getItem("orders")) {
       localStorage.setItem("orderCount", 0);

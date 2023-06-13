@@ -18,10 +18,8 @@ const Navbar = () => {
   }, [isAuthenticated]);
   
   function logout() {
-    console.log("hi");
     dispatch(setAuthenticated({ isAuthenticated: false}))
     Cookie.remove("token");
-
   }
 
   return (

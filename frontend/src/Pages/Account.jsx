@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router";
 import { Link } from "react-router-dom";
+import { setAuthenticated } from "../utlis/redux/userSlice";
+import Cookie from 'js-cookie'
 
 function Account() {
+
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (Cookie.get("token")) {
+      dispatch(setAuthenticated({ token: Cookie.get("token") }));
+    }
+  }, [isAuthenticated]);
+
+
   return (
     <div className="flex">
-      <aside
+     {
+      isAuthenticated?(
+        <div className="flex">
+           <aside
         id="logo-sidebar"
         className="left-0 z-40 w-64 h-screen "
         aria-label="Sidebar"
@@ -90,6 +107,14 @@ function Account() {
       <div className="border border-solid w-full p-2">
         <Outlet />
       </div>
+        </div>
+      ):(
+        <div className="flex justify-center items-center h-96 w-screen">
+          <span>You need to login to view the page <Link to={'/login'}> <span className=" text-white bg-secondary p-2 rounded-md ">Login</span></Link></span>
+        </div>
+      )
+     }
+     
     </div>
   );
 }

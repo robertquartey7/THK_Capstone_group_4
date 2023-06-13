@@ -1,6 +1,8 @@
 import Orders from "../Component/checkout/Orders";
 import Total from "../Component/checkout/Total";
 import DeliveryContact from '../Component/checkout/DeliveryContact'
+
+import { CheckCircleIcon } from "@heroicons/react/24/outline";
 function Checkout() {
   return (
     <div className="grid grid-cols-2">
@@ -25,7 +27,10 @@ function Checkout() {
         {/* order summary button */}
       </div>
       <div>
-        {/* delivery and payment */}
+<div className="flex items-center justify-center">
+  <span>Delivery --- </span> <CheckCircleIcon className="h-7 w-7"/>---<span></span> <span>Payment</span>
+</div>
+      {/* delivery and payment */}
         <DeliveryContact/>
         {/* continue button */}
       </div>

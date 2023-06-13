@@ -9,6 +9,7 @@ function LocateShopCard({props}) {
   
 
   const { lat, lng } = useSelector((state) => state.user.location);
+  console.log(lat, lng)
   const dispatch = useDispatch();
   const directionService = new google.maps.DirectionsService();
 
@@ -22,7 +23,7 @@ function LocateShopCard({props}) {
         lat,
         lng,
       },
-      destination: props.props.location,
+      destination: props.location,
       travelMode: google.maps.TravelMode.DRIVING,
     });
 
