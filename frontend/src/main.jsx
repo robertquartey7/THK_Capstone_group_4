@@ -65,10 +65,7 @@ const router = createBrowserRouter([
         element: <Shop />,
         children: [
           {},
-          {
-            path: "stores",
-            element: <Stores />,
-          },
+   
         ],
       },
       {
@@ -82,6 +79,10 @@ const router = createBrowserRouter([
           {
             path: "products",
             element: <Product />,
+          },
+          {
+            path: "stores",
+            element: <Stores />,
           },
         ],
       },
