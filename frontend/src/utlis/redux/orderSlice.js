@@ -6,6 +6,7 @@ const initialState = {
   orderPrice:5.00,
   orderTotalPrice: 0,
   subTotal:0,
+  total:0
 
 };
 
@@ -26,6 +27,6 @@ const orderSlice = createSlice({
 });
 
 
-export const {addOrderDetails, increment, decrement} = orderSlice.actions
+export const {addOrderDetails, increment, decrement,  addSubtotal} = orderSlice.actions
 
 export default orderSlice.reducer

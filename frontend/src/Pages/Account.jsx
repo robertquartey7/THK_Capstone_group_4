@@ -16,11 +16,12 @@ function Account() {
     }
   }, [isAuthenticated]);
 
+  console.log(isAuthenticated)
 
   return (
     <div className="flex">
      {
-      isAuthenticated?(
+      !isAuthenticated ?(
         <div className="flex">
            <aside
         id="logo-sidebar"
