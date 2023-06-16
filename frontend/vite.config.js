@@ -11,7 +11,7 @@ export default defineConfig(({mode})=>{
     plugins: [react()],
     server: {
       proxy: {
-        "/v1": env.VITE_BACKEND_URL || 'tkhcapstonegroup4-production.up.railway.app',
+        "/v1": env.VITE_BACKEND_URL || 'http://tkhcapstonegroup4-production.up.railway.app',
       },
     },
   }
