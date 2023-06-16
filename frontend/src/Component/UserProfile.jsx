@@ -4,7 +4,7 @@ import useSWR from 'swr'
 import { fetcher } from "../utlis/dataFetch";
 function UserProfile() {
   const { data, error, isLoading, isValidating } = useSWR(
-    "/v1/auth",
+    "https://tkhcapstonegroup4-production.up.railway.app/v1/auth",
     fetcher
   );
 

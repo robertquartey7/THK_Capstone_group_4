@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { fetcher } from "../utlis/dataFetch";
 import StoreCard from "../Component/StoreCard";
 function Store() {
-  const { data, isLoading, error } = useSWR("/v1/stores", fetcher);
+  const { data, isLoading, error } = useSWR("https://tkhcapstonegroup4-production.up.railway.app/v1/stores", fetcher);
 
   if (data) {
     return (

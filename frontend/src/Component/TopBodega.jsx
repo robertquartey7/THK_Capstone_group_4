@@ -7,7 +7,7 @@ import HomeStoreLoading from "./Loading/HomeStoreLoading";
 
 function TopBodega() {
   const { data, error, isLoading, isValidating } = useSWR(
-    "/v1/stores",
+    "https://tkhcapstonegroup4-production.up.railway.app/v1/stores",
     fetcher
   );
 
