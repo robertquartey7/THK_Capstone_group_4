@@ -8,7 +8,7 @@ import { fetcher } from "../utlis/dataFetch";
 
 function LocateComp() {
   const { data, error, isLoading, isValidating } = useSWR(
-    "/v1/stores",
+    "https://tkhcapstonegroup4-production.up.railway.app/v1/stores",
     fetcher
   );
   const [selectedStore, setSelectedStore] = useState('')

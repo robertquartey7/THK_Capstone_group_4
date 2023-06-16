@@ -11,7 +11,7 @@ function Product() {
   const { id } = useParams();
   const [orderClick, setOrderClick] = useState(true);
   const { data, error, isLoading, isValidating } = useSWR(
-    `/v1/store/${id}/items?group=true`,
+    `https://tkhcapstonegroup4-production.up.railway.app/v1/store/${id}/items?group=true`,
     fetcher
   );
 

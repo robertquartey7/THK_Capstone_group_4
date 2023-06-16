@@ -31,7 +31,7 @@ export default function Login() {
 
     try {
    
-      const getUser = await axios.post(`/v1/auth/login`, {
+      const getUser = await axios.post(`https://tkhcapstonegroup4-production.up.railway.app/v1/auth/login`, {
         email: user.email,
         password: user.password,
       });

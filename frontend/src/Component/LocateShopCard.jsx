@@ -31,15 +31,15 @@ function LocateShopCard({props}) {
       setDirection({ direction: result})
     );
 
-
+  
   }
 
 
   function cancelDirection(){
-    console.log('cacel')
+
     setDirectionState(false)
     dispatch(setDirection({direction:null}))
-    console.log(directionState)
+   
   }
 
   return (

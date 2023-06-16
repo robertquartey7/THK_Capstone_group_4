@@ -10,9 +10,7 @@ export default defineConfig(({mode})=>{
   return {
     plugins: [react()],
     server: {
-      proxy: {
-        "/v1": env.VITE_BACKEND_URL || 'http://localhost:3000',
-      },
+      
     },
   }
 })

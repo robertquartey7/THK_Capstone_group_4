@@ -43,7 +43,7 @@ export default function Signup() {
 
    try {
     const newUser = await axios
-    .post(`/v1/auth/signup`, {
+    .post(`https://tkhcapstonegroup4-production.up.railway.app/v1/auth/signup`, {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,

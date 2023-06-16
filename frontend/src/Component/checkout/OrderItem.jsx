@@ -1,20 +1,31 @@
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { useDispatch, useSelector } from "react-redux";
-import { increment, decrement } from "../../utlis/redux/orderSlice";
-import { useState } from "react";
+import { increment, decrement, addSubtotal } from "../../utlis/redux/orderSlice";
+import { useEffect, useState } from "react";
 
 function OrderItem() {
   const [initialPrice, setInitialPrice] = useState(5);
   const [price, setPrice] = useState(initialPrice);
   const [orderNumber, setOrderNumber] = useState(1);
+  const subTotal = useSelector((state) => state.order.subTotal);
 
+
+  useEffect(()=>{
+    dispatch(addSubtotal({addPrice:initialPrice}))
+
+
+
+    console.log(subTotal)
+  }, [])
   const dispatch = useDispatch();
 
-  async function incrementOrder() {
+  function incrementOrder() {
     const newOrderNumber = orderNumber + 1;
     const newPrice = initialPrice * newOrderNumber;
     setOrderNumber(newOrderNumber);
     setPrice(newPrice);
+    dispatch(addSubtotal({addPrice:initialPrice}))
+
   }
 
   function decrementOrder() {
@@ -23,6 +34,7 @@ function OrderItem() {
       const newPrice = initialPrice * newOrderNumber;
       setOrderNumber(newOrderNumber);
       setPrice(newPrice);
+      dispatch(addSubtotal({addPrice:(-initialPrice)}))
     }
   }
 

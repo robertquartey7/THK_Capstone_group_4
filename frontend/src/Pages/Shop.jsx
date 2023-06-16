@@ -3,7 +3,7 @@ import useSWR from "swr"
 import {fetcher} from "../utlis/dataFetch"
 
 function Shop() {
-const {data, isLoading, error} = useSWR("/v1/shop", fetcher)
+const {data, isLoading, error} = useSWR("https://tkhcapstonegroup4-production.up.railway.app/v1/shop", fetcher)
 
   
   return (
