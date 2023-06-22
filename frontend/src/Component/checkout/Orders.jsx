@@ -17,7 +17,7 @@ function Orders() {
 
     for (const ord of order) {
       // console.log(ord)
-      result[ord] = result[ord] + 1 || 1;
+      result[ord] = result[ord] + 1 || 1 + 0;
     }
     setorders(result);
   }
@@ -27,13 +27,13 @@ function Orders() {
     for (const ids in orders) {
       const {
         data: { data },
-      } = await axios.get(`https://tkhcapstonegroup4-production.up.railway.app/v1/items/${ids}
+      } =
+        await axios.get(`https://tkhcapstonegroup4-production.up.railway.app/v1/items/${ids}
     `);
       orderItems.push(data);
     }
     setorderData(orderItems);
     setOrderChange(true);
-    
   }
 
   useEffect(() => {
@@ -48,7 +48,7 @@ function Orders() {
           {orderData?.map((items) => {
             return (
               <div key={items.id}>
-                <OrderItem orders={items} orderDetails={orders}/>
+                <OrderItem orders={items} orderDetails={orders} />
               </div>
             );
           })}
