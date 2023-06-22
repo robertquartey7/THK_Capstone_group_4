@@ -31,6 +31,28 @@ router.get("/items", async (_req, res) => {
     });
   }
 });
+// get one
+router.get("/items/:id", async (req, res) => {
+  try {
+    const items = await prisma.item.findFirst({
+      where:{
+        id: req.params.id
+      }
+    });
+
+    if (items) {
+      res.status(200).json({
+        success: true,
+        data: items,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+    });
+  }
+});
 
 // create an all items from a store
 router.get("/store/:storeId/items", async (req, res) => {
