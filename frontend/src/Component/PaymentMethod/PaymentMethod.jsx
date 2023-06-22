@@ -4,7 +4,7 @@ import { Radio } from "@material-tailwind/react";
 function PaymentMethod() {
   return (
     <>
-      <div>
+      <div className=" border">
         <span>Payment Method</span>
 
         <div class="flex">

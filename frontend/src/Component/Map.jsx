@@ -19,7 +19,7 @@ function Map({ data }) {
   
 
   useEffect(()=>{
-    console.log(lat, lng)
+
   }, [])
 
  
@@ -67,7 +67,7 @@ function Map({ data }) {
     scale: 1,
   };
 
-  console.log(direction)
+ 
   return (
     <div className="h-full">
       <GoogleMap

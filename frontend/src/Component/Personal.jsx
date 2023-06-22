@@ -1,6 +1,31 @@
-import React from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Cookie from "js-cookie";
 
 function Personal() {
+  const [userProileData, setUserProfileData] = useState(null);
+
+  async function getUserData() {
+    const {
+      data: { data },
+    } = await axios.get(
+      "https://tkhcapstonegroup4-production.up.railway.app/v1/auth/",
+      {
+        headers: {
+          Authorization: `Bearer ${Cookie.get("token")}`,
+        },
+      }
+    );
+    if (data) {
+      setUserProfileData(data);
+      console.log(data);
+    }
+  }
+  useEffect(() => {
+    getUserData();
+    console.log(userProileData);
+  }, []);
+
   return (
     <div>
       <div className="container px-5  mx-auto flex w-full h-full">
@@ -41,6 +66,7 @@ function Personal() {
                 type="text"
                 id="firstName"
                 name="firstName"
+                value={userProileData?.firstName}
                 className="w-full bg-white rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
@@ -52,6 +78,7 @@ function Personal() {
                 type="text"
                 id="firstName"
                 name="firstName"
+                value={userProileData?.lastName}
                 className="w-full bg-white rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
@@ -64,6 +91,7 @@ function Personal() {
               type="email"
               id="email"
               name="email"
+              value={userProileData?.email}
               className="w-full bg-white rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>
@@ -88,6 +116,7 @@ function Personal() {
                 id="number"
                 name="number"
                 className="w-full bg-white rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                value={userProileData?.number}
               />
             </div>
             <div className="relative mb-4">
