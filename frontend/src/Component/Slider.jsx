@@ -27,6 +27,7 @@ export default function MultipleItems({props, addOrder, setOrderClick, orderClic
               <div className="relative">
                 <img className="" src={item.imageUrl} />
                 <span className="absolute top-2 right-3 hover:bg-red-900 rounded-full hover:text-white cursor-pointer" onClick={()=>{
+                
                   addOrder(item.id)
                   
                   orderClick===true? setOrderClick(false) : setOrderClick(true)

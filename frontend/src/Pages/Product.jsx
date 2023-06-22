@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import MultipleItems from "../Component/Slider";
 import { fetcher } from "../utlis/dataFetch";
+
 import useSWR from "swr";
 import Loading from "../Component/Loading/Loading";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
@@ -67,7 +68,10 @@ function Product() {
             {data.data[0].stores[0]?.store.name}
           </span>
           <span className="cursor-pointer relative">
-            <ShoppingCartIcon className="h-10" />
+            <Link to={`/checkout`}>
+              {" "}
+              <ShoppingCartIcon className="h-10" />
+            </Link>
             <span className="absolute -top-3 -right-1 bg-red-900 border h-6 w-6 text-center rounded-full">
               {localStorage.getItem("orderCount")}
             </span>
@@ -78,10 +82,8 @@ function Product() {
           {data.data.map((element) => (
             <MultipleItems
               props={element}
-              addOrder={() => {
-                addOrder(id);
-              }}
-              key={element.key}
+              addOrder={addOrder}
+              key={element.id}
               setOrderClick={setOrderClick}
               orderClick={orderClick}
             />

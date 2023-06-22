@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import LocateShopCard from "./LocateShopCard";
 import Map from "./Map";
-import { Link } from "react-router-dom";
+
 import useSWR from "swr";
 import { fetcher } from "../utlis/dataFetch";
 

@@ -4,12 +4,12 @@ import { XCircleIcon } from "@heroicons/react/24/outline";
 import { useSelector, useDispatch,  } from "react-redux";
 
 import {setDirection} from "../utlis/redux/userSlice";
-function LocateShopCard({props}) {
+function LocateShopCard({props, distanceInfo}) {
   const [directionState, setDirectionState] = useState(false);
-  
+  const [distance, setDistance ] = useState(null)
 
   const { lat, lng } = useSelector((state) => state.user.location);
-  console.log(lat, lng)
+
   const dispatch = useDispatch();
   const directionService = new google.maps.DirectionsService();
 
@@ -30,6 +30,9 @@ function LocateShopCard({props}) {
     dispatch(
       setDirection({ direction: result})
     );
+    setDistance(result.routes[0].legs[0])
+  
+    console.log(result.routes[0].legs[0])
 
   
   }
@@ -81,7 +84,11 @@ function LocateShopCard({props}) {
               <span>
                 <span>{props.storehours}</span>
               </span>
-              <span className="">{}</span>
+             
+            </div>
+            <div className="flex gap-2">
+            <span className="text-gray-500">{distance?.distance.text}</span>
+            <span className="text-gray-500">{distance?.duration.text}</span>
             </div>
 
             {/* favorite */}
